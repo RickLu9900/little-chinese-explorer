@@ -707,19 +707,40 @@
             });
         }
         function speakCurrent() {
-            if (!appData.currentChar) return;
-            const utterance = new SpeechSynthesisUtterance(appData.currentChar.char);
-            utterance.lang = 'zh-CN';
-            utterance.rate = 0.8;
-            utterance.pitch = 1.2;
-            speechSynthesis.speak(utterance);
-            setTimeout(() => {
-                const pinyinUtterance = new SpeechSynthesisUtterance(appData.currentChar.pinyin);
-                pinyinUtterance.lang = 'zh-CN';
-                pinyinUtterance.rate = 0.6;
-                speechSynthesis.speak(pinyinUtterance);
-            }, 1000);
-        }
+    if (!appData.currentChar) return;
+    
+    // iOS 需要取消之前的语音
+    speechSynthesis.cancel();
+    
+    const utterance = new SpeechSynthesisUtterance(appData.currentChar.char);
+    utterance.lang = 'zh-CN';
+    utterance.rate = 0.7;  // iOS 上慢一点更清楚
+    utterance.pitch = 1.1;
+    
+    // iOS 需要这个事件才能播放
+    utterance.onstart = function() {
+        console.log('开始朗读');
+    };
+    
+    utterance.onerror = function(e) {
+        console.log('朗读错误:', e);
+        // 如果失败，尝试用英文语音读拼音
+        const fallback = new SpeechSynthesisUtterance(appData.currentChar.pinyin);
+        fallback.lang = 'en-US';
+        speechSynthesis.speak(fallback);
+    };
+    
+    speechSynthesis.speak(utterance);
+    
+    // 延迟读拼音
+    setTimeout(() => {
+        speechSynthesis.cancel();  // 先取消，避免队列堆积
+        const pinyinUtterance = new SpeechSynthesisUtterance(appData.currentChar.pinyin);
+        pinyinUtterance.lang = 'zh-CN';
+        pinyinUtterance.rate = 0.5;
+        speechSynthesis.speak(pinyinUtterance);
+    }, 1500);
+}
         async function sendChat() {
             const input = document.getElementById('chatInput');
             const message = input.value.trim();
