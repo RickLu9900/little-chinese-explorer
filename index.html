@@ -13,6 +13,7 @@
             background: linear-gradient(135deg, #FFF8E7 0%, #FFE4E1 50%, #E8F5E9 100%);
             min-height: 100vh;
             overflow-x: hidden;
+            touch-action: manipulation;
         }
         .container { max-width: 900px; margin: 0 auto; padding: 16px; }
         .header {
@@ -90,17 +91,6 @@
             transition: width 0.8s ease;
             position: relative;
         }
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
         .progress-text {
             text-align: center;
             margin-top: 10px;
@@ -137,26 +127,18 @@
         }
         .content-area { display: none; }
         .content-area.active { display: block; }
+
+        /* 汉字展示卡片 */
         .char-card {
             background: white;
             border-radius: 24px;
-            padding: 32px 24px;
+            padding: 24px;
             text-align: center;
             box-shadow: 0 8px 30px rgba(0,0,0,0.08);
             margin: 16px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .char-card::before {
-            content: '';
-            position: absolute;
-            top: -50px; right: -50px;
-            width: 120px; height: 120px;
-            background: rgba(232,93,78,0.05);
-            border-radius: 50%;
         }
         .char-display {
-            font-size: 80px;
+            font-size: 100px;
             font-weight: 700;
             color: #E85D4E;
             line-height: 1;
@@ -164,31 +146,102 @@
             text-shadow: 3px 3px 0px rgba(232,93,78,0.1);
         }
         .pinyin-display {
-            font-size: 28px;
+            font-size: 32px;
             color: #666;
             margin: 8px 0;
         }
         .meaning-display {
-            font-size: 16px;
+            font-size: 18px;
             color: #999;
             margin-top: 4px;
         }
-        .char-emoji { font-size: 48px; margin: 12px 0; }
-        .stroke-display {
-            background: #FFF8E7;
-            border-radius: 12px;
-            padding: 10px 16px;
-            margin: 12px auto;
-            display: inline-block;
-            font-size: 20px;
-            color: #C4785A;
-            letter-spacing: 4px;
+        .char-emoji { font-size: 48px; margin: 8px 0; }
+
+        /* 手写区域 */
+        .write-section {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            margin: 16px 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
+        .write-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .write-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .write-box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 3px solid #E85D4E;
+            border-radius: 16px;
+            background: linear-gradient(90deg, transparent 49%, #FFE4E1 49%, #FFE4E1 51%, transparent 51%),
+                        linear-gradient(0deg, transparent 49%, #FFE4E1 49%, #FFE4E1 51%, transparent 51%);
+            background-size: 100% 100%, 100% 100%;
+            overflow: hidden;
+            touch-action: none;
+        }
+        .write-box canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 13px;
+        }
+        .write-label {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* 笔画示范 */
+        .stroke-demo {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 3px dashed #CCC;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #FFF8E7;
+        }
+        .stroke-demo .demo-char {
+            font-size: 120px;
+            color: #E85D4E;
+            opacity: 0.3;
+            position: absolute;
+        }
+        .stroke-demo .demo-stroke {
+            font-size: 120px;
+            color: #E85D4E;
+            position: absolute;
+            animation: strokeDraw 2s ease-in-out infinite;
+        }
+        @keyframes strokeDraw {
+            0% { clip-path: inset(0 100% 0 0); }
+            100% { clip-path: inset(0 0 0 0); }
+        }
+
+        /* 按钮 */
         .btn-group {
             display: flex;
             gap: 12px;
             margin-top: 20px;
             justify-content: center;
+            flex-wrap: wrap;
         }
         .btn {
             padding: 14px 28px;
@@ -217,107 +270,85 @@
             color: white;
             box-shadow: 0 4px 16px rgba(76,175,80,0.3);
         }
-        .chat-area {
-            background: white;
-            border-radius: 20px;
-            padding: 16px;
-            margin: 16px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            max-height: 400px;
-            overflow-y: auto;
+
+        /* 笔画顺序展示 */
+        .stroke-order {
+            background: #FFF8E7;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin: 12px auto;
+            display: inline-block;
+            font-size: 20px;
+            color: #C4785A;
+            letter-spacing: 4px;
         }
-        .chat-message {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
-            align-items: flex-start;
+
+        /* 星星动画 */
+        .star-pop {
+            position: fixed;
+            font-size: 30px;
+            animation: floatUp 1s ease-out forwards;
+            pointer-events: none;
+            z-index: 1000;
         }
-        .chat-avatar {
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            display: flex;
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
+
+        /* 完成提示 */
+        .success-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
+            z-index: 2000;
         }
-        .chat-avatar.teacher {
-            background: linear-gradient(135deg, #E85D4E, #FF6B6B);
-        }
-        .chat-avatar.student {
-            background: linear-gradient(135deg, #4CAF50, #66BB6A);
-        }
-        .chat-bubble {
-            background: #FFF8E7;
-            padding: 12px 16px;
-            border-radius: 16px;
-            border-bottom-left-radius: 4px;
-            font-size: 15px;
-            line-height: 1.6;
-            color: #333;
-            max-width: 80%;
-        }
-        .chat-bubble.student {
-            background: #E8F5E9;
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 4px;
-        }
-        .chat-input-area {
-            display: flex;
-            gap: 10px;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid #F0F0F0;
-        }
-        .chat-input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 2px solid #F0F0F0;
+        .success-overlay.show { display: flex; }
+        .success-card {
+            background: white;
             border-radius: 24px;
-            font-size: 15px;
-            outline: none;
-            transition: border-color 0.2s;
+            padding: 40px;
+            text-align: center;
+            animation: popIn 0.3s ease;
         }
-        .chat-input:focus { border-color: #E85D4E; }
-        .quiz-card {
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .success-card .big-emoji { font-size: 80px; }
+        .success-card h2 { color: #E85D4E; margin: 16px 0; }
+
+        /* 设置面板 */
+        .settings-card {
             background: white;
             border-radius: 20px;
-            padding: 24px;
+            padding: 20px;
             margin: 16px 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
-        .quiz-question {
-            font-size: 18px;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 20px;
-            text-align: center;
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #F5F5F5;
         }
-        .quiz-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
+        .setting-row:last-child { border-bottom: none; }
+        .setting-label { font-size: 15px; color: #333; font-weight: 600; }
+        .setting-input {
+            padding: 8px 14px;
+            border: 2px solid #F0F0F0;
+            border-radius: 10px;
+            font-size: 14px;
+            width: 200px;
+            outline: none;
         }
-        .quiz-option {
-            background: #F8F8F8;
-            border: 3px solid transparent;
-            border-radius: 16px;
-            padding: 16px;
-            text-align: center;
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .quiz-option:hover { background: #FFF8E7; }
-        .quiz-option:active { transform: scale(0.95); }
-        .quiz-option.correct {
-            border-color: #4CAF50;
-            background: #E8F5E9;
-        }
-        .quiz-option.wrong {
-            border-color: #E85D4E;
-            background: #FFEBEE;
-        }
+        .setting-input:focus { border-color: #E85D4E; }
+
+        /* 徽章 */
         .badges-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -347,65 +378,11 @@
             opacity: 0.6;
         }
         .badge-name { font-size: 12px; color: #666; font-weight: 600; }
-        .settings-card {
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-            margin: 16px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        }
-        .setting-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 0;
-            border-bottom: 1px solid #F5F5F5;
-        }
-        .setting-row:last-child { border-bottom: none; }
-        .setting-label { font-size: 15px; color: #333; font-weight: 600; }
-        .setting-input {
-            padding: 8px 14px;
-            border: 2px solid #F0F0F0;
-            border-radius: 10px;
-            font-size: 14px;
-            width: 200px;
-            outline: none;
-        }
-        .setting-input:focus { border-color: #E85D4E; }
-        .loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            padding: 20px;
-        }
-        .loading-dot {
-            width: 10px; height: 10px;
-            background: #E85D4E;
-            border-radius: 50%;
-            animation: bounce 1.4s infinite ease-in-out both;
-        }
-        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
-        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes bounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
-        }
-        .star-pop {
-            position: fixed;
-            font-size: 30px;
-            animation: floatUp 1s ease-out forwards;
-            pointer-events: none;
-            z-index: 1000;
-        }
-        @keyframes floatUp {
-            0% { transform: translateY(0) scale(1); opacity: 1; }
-            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
-        }
+
         @media (max-width: 600px) {
             .header h1 { font-size: 24px; }
-            .char-display { font-size: 60px; }
-            .quiz-options { grid-template-columns: 1fr; }
+            .char-display { font-size: 80px; }
+            .write-box, .stroke-demo { width: 150px; height: 150px; }
             .badges-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
@@ -418,6 +395,7 @@
             <h1>小小中文家</h1>
             <div class="header-sub">Little Chinese Explorer</div>
         </div>
+
         <div class="stats-row">
             <div class="stat-card fire">
                 <div class="stat-icon">🔥</div>
@@ -435,6 +413,7 @@
                 <div class="stat-label">获得星星</div>
             </div>
         </div>
+
         <div class="level-card">
             <div class="level-header">
                 <span class="level-title">Level <span id="currentLevel">1</span> <span style="color:#999;font-size:14px;">小探险家</span></span>
@@ -445,41 +424,56 @@
             </div>
             <div class="progress-text" id="progressText">开始学习第一个汉字吧！🌟</div>
         </div>
+
         <div class="nav-tabs">
             <button class="nav-tab active" onclick="switchTab('learn')">📖 学汉字</button>
-            <button class="nav-tab" onclick="switchTab('chat')">💬 问老师</button>
+            <button class="nav-tab" onclick="switchTab('write')">✍️ 写汉字</button>
             <button class="nav-tab" onclick="switchTab('badges')">🏆 徽章</button>
             <button class="nav-tab" onclick="switchTab('settings')">⚙️ 设置</button>
         </div>
+
+        <!-- 学汉字 -->
         <div class="content-area active" id="tab-learn">
             <div class="char-card" id="charCard">
                 <div class="char-emoji" id="charEmoji">🌟</div>
                 <div class="char-display" id="charDisplay">?</div>
                 <div class="pinyin-display" id="pinyinDisplay">准备好了吗？</div>
                 <div class="meaning-display" id="meaningDisplay">点击"开始学习"认识第一个汉字</div>
-                <div class="stroke-display" id="strokeDisplay" style="display:none;"></div>
+                <div class="stroke-order" id="strokeDisplay" style="display:none;"></div>
                 <div class="btn-group">
                     <button class="btn btn-primary" onclick="startLearning()">🚀 开始学习</button>
                     <button class="btn btn-secondary" onclick="speakCurrent()">🔊 朗读</button>
                 </div>
             </div>
-            <div class="quiz-card" id="quizCard" style="display:none;">
-                <div class="quiz-question" id="quizQuestion">这个字怎么读？</div>
-                <div class="quiz-options" id="quizOptions"></div>
-            </div>
         </div>
-        <div class="content-area" id="tab-chat">
-            <div class="chat-area" id="chatArea">
-                <div class="chat-message">
-                    <div class="chat-avatar teacher">👩‍🏫</div>
-                    <div class="chat-bubble">你好呀！我是你的中文老师 👋 有任何问题都可以问我哦！比如"水怎么读？"或者"教我一个新字吧！"</div>
+
+        <!-- 写汉字 -->
+        <div class="content-area" id="tab-write">
+            <div class="write-section">
+                <div class="write-title">✏️ 跟着写一写：<span id="writeCharName" style="color:#E85D4E;">请先学习汉字</span></div>
+                <div class="write-container">
+                    <div>
+                        <div class="stroke-demo" id="strokeDemo">
+                            <div class="demo-char" id="demoChar">字</div>
+                        </div>
+                        <div class="write-label">👆 示范</div>
+                    </div>
+                    <div>
+                        <div class="write-box" id="writeBox">
+                            <canvas id="writeCanvas"></canvas>
+                        </div>
+                        <div class="write-label">✍️ 你的练习</div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-secondary" onclick="clearCanvas()">🗑️ 重写</button>
+                    <button class="btn btn-success" onclick="checkWriting()">✅ 完成</button>
+                    <button class="btn btn-primary" onclick="nextChar()">➡️ 下一个</button>
                 </div>
             </div>
-            <div class="chat-input-area">
-                <input type="text" class="chat-input" id="chatInput" placeholder="输入你想说的话..." onkeypress="if(event.key==='Enter')sendChat()">
-                <button class="btn btn-primary" onclick="sendChat()">发送</button>
-            </div>
         </div>
+
+        <!-- 徽章 -->
         <div class="content-area" id="tab-badges">
             <div class="badges-grid">
                 <div class="badge-item">
@@ -499,8 +493,8 @@
                     <div class="badge-name">识字达人</div>
                 </div>
                 <div class="badge-item">
-                    <div class="badge-circle locked" id="badge5">🎭</div>
-                    <div class="badge-name">故事大王</div>
+                    <div class="badge-circle locked" id="badge5">✍️</div>
+                    <div class="badge-name">书写能手</div>
                 </div>
                 <div class="badge-item">
                     <div class="badge-circle locked" id="badge6">🏆</div>
@@ -508,6 +502,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- 设置 -->
         <div class="content-area" id="tab-settings">
             <div class="settings-card">
                 <div class="setting-row">
@@ -529,66 +525,80 @@
             </div>
         </div>
     </div>
+
+    <!-- 完成提示 -->
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-card">
+            <div class="big-emoji">🎉</div>
+            <h2>写得太棒了！</h2>
+            <p style="color:#666;margin:8px 0;">获得 ⭐ 5 颗星星！</p>
+            <button class="btn btn-primary" onclick="closeSuccess()" style="margin-top:16px;">继续学习</button>
+        </div>
+    </div>
+
     <script>
+        // ==================== 数据 ====================
         let appData = {
             apiKey: localStorage.getItem('kimi_api_key') || '',
             studentName: localStorage.getItem('student_name') || '小朋友',
             level: parseInt(localStorage.getItem('current_level')) || 1,
             learnedChars: JSON.parse(localStorage.getItem('learned_chars') || '[]'),
+            writtenChars: JSON.parse(localStorage.getItem('written_chars') || '[]'),
             totalStars: parseInt(localStorage.getItem('total_stars')) || 0,
             streakDays: parseInt(localStorage.getItem('streak_days')) || 1,
             lastLearnDate: localStorage.getItem('last_learn_date') || '',
             currentChar: null,
-            quizActive: false
+            currentCharIndex: 0
         };
+
         const LEVEL_TARGETS = [10, 15, 20, 25, 30, 35, 40, 45, 50, 60];
         const LEVEL_NAMES = ['小探险家', '小学徒', '小读者', '小诗人', '小作家', '小翻译', '小学者', '小博士', '小大师', '中文之星'];
-        // 从外部 JSON 文件加载字库
-let CHAR_LIBRARY = {};
 
-async function loadCharLibrary() {
-    try {
-        const response = await fetch('char_library.json');
-        const data = await response.json();
-        CHAR_LIBRARY = data;
-        console.log('字库加载成功！');
-    } catch (error) {
-        console.error('字库加载失败:', error);
-        // 如果加载失败，使用内置的简化字库
-        CHAR_LIBRARY = {
-            "1": {
-                "name": "基础汉字",
-                "chars": [
-                    {"char": "一", "pinyin": "yī", "meaning": "one", "emoji": "1️⃣"},
-                    {"char": "二", "pinyin": "èr", "meaning": "two", "emoji": "2️⃣"},
-                    {"char": "三", "pinyin": "sān", "meaning": "three", "emoji": "3️⃣"},
-                    {"char": "大", "pinyin": "dà", "meaning": "big", "emoji": "👐"},
-                    {"char": "小", "pinyin": "xiǎo", "meaning": "small", "emoji": "👶"},
-                    {"char": "人", "pinyin": "rén", "meaning": "person", "emoji": "🧍"},
-                    {"char": "口", "pinyin": "kǒu", "meaning": "mouth", "emoji": "👄"},
-                    {"char": "日", "pinyin": "rì", "meaning": "sun", "emoji": "☀️"},
-                    {"char": "月", "pinyin": "yuè", "meaning": "moon", "emoji": "🌙"},
-                    {"char": "水", "pinyin": "shuǐ", "meaning": "water", "emoji": "💧"}
-                ]
+        // ==================== 字库 ====================
+        let CHAR_LIBRARY = {};
+
+        async function loadCharLibrary() {
+            try {
+                const response = await fetch('char_library.json');
+                const data = await response.json();
+                CHAR_LIBRARY = data;
+                console.log('字库加载成功！');
+            } catch (error) {
+                console.error('字库加载失败，使用内置字库');
+                CHAR_LIBRARY = {
+                    "1": {
+                        "name": "基础汉字",
+                        "chars": [
+                            {"char": "一", "pinyin": "yī", "meaning": "one", "emoji": "1️⃣"},
+                            {"char": "二", "pinyin": "èr", "meaning": "two", "emoji": "2️⃣"},
+                            {"char": "三", "pinyin": "sān", "meaning": "three", "emoji": "3️⃣"},
+                            {"char": "大", "pinyin": "dà", "meaning": "big", "emoji": "👐"},
+                            {"char": "小", "pinyin": "xiǎo", "meaning": "small", "emoji": "👶"},
+                            {"char": "人", "pinyin": "rén", "meaning": "person", "emoji": "🧍"},
+                            {"char": "口", "pinyin": "kǒu", "meaning": "mouth", "emoji": "👄"},
+                            {"char": "日", "pinyin": "rì", "meaning": "sun", "emoji": "☀️"},
+                            {"char": "月", "pinyin": "yuè", "meaning": "moon", "emoji": "🌙"},
+                            {"char": "水", "pinyin": "shuǐ", "meaning": "water", "emoji": "💧"}
+                        ]
+                    }
+                };
             }
-        };
-    }
-}
+        }
 
-// 页面加载时自动加载字库
-loadCharLibrary();
+        // ==================== 初始化 ====================
         function init() {
-    document.getElementById('apiKeyInput').value = appData.apiKey;
-    document.getElementById('studentName').value = appData.studentName;
-    document.getElementById('settingsLevel').value = appData.level;
-    
-    // 等待字库加载完成
-    loadCharLibrary().then(() => {
-        updateStats();
-        checkStreak();
-        updateBadges();
-    });
-}
+            document.getElementById('apiKeyInput').value = appData.apiKey;
+            document.getElementById('studentName').value = appData.studentName;
+            document.getElementById('settingsLevel').value = appData.level;
+
+            loadCharLibrary().then(() => {
+                updateStats();
+                checkStreak();
+                updateBadges();
+                initCanvas();
+            });
+        }
+
         function updateStats() {
             document.getElementById('streakDays').textContent = appData.streakDays;
             document.getElementById('totalChars').textContent = appData.learnedChars.length;
@@ -596,9 +606,11 @@ loadCharLibrary();
             document.getElementById('currentLevel').textContent = appData.level;
             document.getElementById('learnedCount').textContent = appData.learnedChars.length;
             document.getElementById('levelTarget').textContent = LEVEL_TARGETS[appData.level - 1] || 60;
+
             const target = LEVEL_TARGETS[appData.level - 1] || 60;
             const progress = Math.min((appData.learnedChars.length / target) * 100, 100);
             document.getElementById('progressBar').style.width = progress + '%';
+
             if (progress >= 100) {
                 document.getElementById('progressText').textContent = `🎉 恭喜！可以升级到 Level ${appData.level + 1} 啦！`;
             } else {
@@ -606,6 +618,7 @@ loadCharLibrary();
                 document.getElementById('progressText').textContent = `再学 ${remaining} 个字就能升级啦！加油！💪`;
             }
         }
+
         function checkStreak() {
             const today = new Date().toDateString();
             if (appData.lastLearnDate) {
@@ -616,13 +629,14 @@ loadCharLibrary();
                 }
             }
         }
+
         function updateBadges() {
             const badges = [
                 {id: 'badge1', condition: appData.learnedChars.length >= 1},
                 {id: 'badge2', condition: appData.streakDays >= 7},
                 {id: 'badge3', condition: appData.totalStars >= 50},
                 {id: 'badge4', condition: appData.learnedChars.length >= 50},
-                {id: 'badge5', condition: appData.level >= 5},
+                {id: 'badge5', condition: appData.writtenChars.length >= 20},
                 {id: 'badge6', condition: appData.level >= 10}
             ];
             badges.forEach(b => {
@@ -633,12 +647,20 @@ loadCharLibrary();
                 }
             });
         }
+
+        // ==================== 标签切换 ====================
         function switchTab(tabName) {
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.content-area').forEach(c => c.classList.remove('active'));
             event.target.classList.add('active');
             document.getElementById('tab-' + tabName).classList.add('active');
+
+            if (tabName === 'write' && appData.currentChar) {
+                updateWriteTab();
+            }
         }
+
+        // ==================== 学习功能 ====================
         function startLearning() {
             const levelKey = appData.level.toString();
             const levelData = CHAR_LIBRARY[levelKey];
@@ -646,31 +668,36 @@ loadCharLibrary();
                 document.getElementById('charDisplay').textContent = '🎉';
                 document.getElementById('pinyinDisplay').textContent = '恭喜！你已经学完了所有汉字！';
                 return;
-        }
+            }
+
             const levelChars = levelData.chars;
             const unlearned = levelChars.filter(c => !appData.learnedChars.includes(c.char));
+
             if (unlearned.length === 0) {
                 if (appData.level < 10) {
                     appData.level++;
                     saveData();
-                    alert('🎉 太棒了！你完成了 Level ' + (appData.level - 1) + '！升级到 Level ' + appData.level + '！');
+                    alert('🎉 太棒了！升级到 Level ' + appData.level + '！');
                     startLearning();
                     return;
                 } else {
                     document.getElementById('charDisplay').textContent = '🏆';
-                    document.getElementById('pinyinDisplay').textContent = '恭喜！你已经学完了所有基础汉字！';
+                    document.getElementById('pinyinDisplay').textContent = '恭喜！你已经学完了所有汉字！';
                     return;
                 }
             }
+
             const char = unlearned[0];
             appData.currentChar = char;
+            appData.currentCharIndex = levelChars.indexOf(char);
+
             document.getElementById('charEmoji').textContent = char.emoji;
             document.getElementById('charDisplay').textContent = char.char;
             document.getElementById('pinyinDisplay').textContent = char.pinyin;
             document.getElementById('meaningDisplay').textContent = char.meaning;
-            document.getElementById('strokeDisplay').textContent = '笔画：' + char.stroke;
+            document.getElementById('strokeDisplay').textContent = '跟我读：' + char.char + ' (' + char.pinyin + ')';
             document.getElementById('strokeDisplay').style.display = 'inline-block';
-            showQuiz(char, levelChars);
+
             if (!appData.learnedChars.includes(char.char)) {
                 appData.learnedChars.push(char.char);
                 appData.totalStars += 5;
@@ -680,157 +707,166 @@ loadCharLibrary();
                 updateBadges();
                 showStarAnimation();
             }
+
+            // 自动切换到写字标签
+            setTimeout(() => {
+                document.querySelectorAll('.nav-tab')[1].click();
+            }, 1000);
         }
-        function showQuiz(correctChar, allChars) {
-    const levelKey = appData.level.toString();
-    const levelData = CHAR_LIBRARY[levelKey];
-    if (!levelData) return;
-    allChars = levelData.chars;
-    
-            const quizCard = document.getElementById('quizCard');
-            const options = document.getElementById('quizOptions');
-            quizCard.style.display = 'block';
-            const wrongOptions = allChars
-                .filter(c => c.char !== correctChar.char)
-                .sort(() => Math.random() - 0.5)
-                .slice(0, 3);
-            const allOptions = [...wrongOptions, correctChar].sort(() => Math.random() - 0.5);
-            options.innerHTML = '';
-            allOptions.forEach(opt => {
-                const btn = document.createElement('div');
-                btn.className = 'quiz-option';
-                btn.innerHTML = `<div style="font-size:36px;font-weight:700;color:#333;">${opt.char}</div><div style="font-size:14px;color:#999;margin-top:4px;">${opt.pinyin}</div>`;
-                btn.onclick = function() {
-                    if (opt.char === correctChar.char) {
-                        btn.classList.add('correct');
-                        appData.totalStars += 10;
-                        saveData();
-                        updateStats();
-                        showStarAnimation();
-                        setTimeout(() => {
-                            quizCard.style.display = 'none';
-                        }, 1500);
-                    } else {
-                        btn.classList.add('wrong');
-                        setTimeout(() => btn.classList.remove('wrong'), 1000);
-                    }
-                };
-                options.appendChild(btn);
-            });
-        }
+
         function speakCurrent() {
-    if (!appData.currentChar) return;
-    
-    // iOS 需要取消之前的语音
-    speechSynthesis.cancel();
-    
-    const utterance = new SpeechSynthesisUtterance(appData.currentChar.char);
-    utterance.lang = 'zh-CN';
-    utterance.rate = 0.7;  // iOS 上慢一点更清楚
-    utterance.pitch = 1.1;
-    
-    // iOS 需要这个事件才能播放
-    utterance.onstart = function() {
-        console.log('开始朗读');
-    };
-    
-    utterance.onerror = function(e) {
-        console.log('朗读错误:', e);
-        // 如果失败，尝试用英文语音读拼音
-        const fallback = new SpeechSynthesisUtterance(appData.currentChar.pinyin);
-        fallback.lang = 'en-US';
-        speechSynthesis.speak(fallback);
-    };
-    
-    speechSynthesis.speak(utterance);
-    
-    // 延迟读拼音
-    setTimeout(() => {
-        speechSynthesis.cancel();  // 先取消，避免队列堆积
-        const pinyinUtterance = new SpeechSynthesisUtterance(appData.currentChar.pinyin);
-        pinyinUtterance.lang = 'zh-CN';
-        pinyinUtterance.rate = 0.5;
-        speechSynthesis.speak(pinyinUtterance);
-    }, 1500);
-}
-        async function sendChat() {
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            if (!message) return;
-            addChatMessage(message, 'student');
-            input.value = '';
-            if (!appData.apiKey) {
-                addChatMessage('请先设置 API Key 哦！点击"设置"标签输入你的 Kimi API Key 🔑', 'teacher');
+            if (!appData.currentChar) return;
+            speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(appData.currentChar.char);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 0.7;
+            utterance.pitch = 1.1;
+            speechSynthesis.speak(utterance);
+            setTimeout(() => {
+                speechSynthesis.cancel();
+                const pinyinUtterance = new SpeechSynthesisUtterance(appData.currentChar.pinyin);
+                pinyinUtterance.lang = 'zh-CN';
+                pinyinUtterance.rate = 0.5;
+                speechSynthesis.speak(pinyinUtterance);
+            }, 1500);
+        }
+
+        // ==================== 手写功能 ====================
+        let canvas, ctx, isDrawing = false;
+        let lastX = 0, lastY = 0;
+
+        function initCanvas() {
+            canvas = document.getElementById('writeCanvas');
+            ctx = canvas.getContext('2d');
+
+            // 设置 canvas 尺寸
+            const box = document.getElementById('writeBox');
+            canvas.width = box.offsetWidth;
+            canvas.height = box.offsetHeight;
+
+            // 设置画笔
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.lineWidth = 8;
+            ctx.strokeStyle = '#E85D4E';
+
+            // 触摸事件
+            canvas.addEventListener('touchstart', handleTouchStart, {passive: false});
+            canvas.addEventListener('touchmove', handleTouchMove, {passive: false});
+            canvas.addEventListener('touchend', handleTouchEnd);
+
+            // 鼠标事件（PC测试用）
+            canvas.addEventListener('mousedown', handleMouseDown);
+            canvas.addEventListener('mousemove', handleMouseMove);
+            canvas.addEventListener('mouseup', handleMouseUp);
+            canvas.addEventListener('mouseleave', handleMouseUp);
+        }
+
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        function handleTouchStart(e) {
+            e.preventDefault();
+            isDrawing = true;
+            const pos = getPos(e);
+            lastX = pos.x;
+            lastY = pos.y;
+        }
+
+        function handleTouchMove(e) {
+            e.preventDefault();
+            if (!isDrawing) return;
+            const pos = getPos(e);
+            draw(pos.x, pos.y);
+        }
+
+        function handleTouchEnd(e) {
+            isDrawing = false;
+        }
+
+        function handleMouseDown(e) {
+            isDrawing = true;
+            const pos = getPos(e);
+            lastX = pos.x;
+            lastY = pos.y;
+        }
+
+        function handleMouseMove(e) {
+            if (!isDrawing) return;
+            const pos = getPos(e);
+            draw(pos.x, pos.y);
+        }
+
+        function handleMouseUp(e) {
+            isDrawing = false;
+        }
+
+        function draw(x, y) {
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            lastX = x;
+            lastY = y;
+        }
+
+        function clearCanvas() {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function updateWriteTab() {
+            if (!appData.currentChar) return;
+
+            document.getElementById('writeCharName').textContent = appData.currentChar.char + ' (' + appData.currentChar.pinyin + ')';
+            document.getElementById('demoChar').textContent = appData.currentChar.char;
+            clearCanvas();
+        }
+
+        function checkWriting() {
+            // 检查是否写了东西
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const hasDrawing = imageData.data.some((val, i) => i % 4 === 3 && val > 0);
+
+            if (!hasDrawing) {
+                alert('请先写字哦！✍️');
                 return;
             }
-            const loadingId = addLoadingMessage();
-            try {
-                const response = await fetch('https://api.moonshot.cn/v1/chat/completions', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${appData.apiKey}`
-                    },
-                    body: JSON.stringify({
-                        model: 'kimi-k2-5',
-                        messages: [
-                            {
-                                role: 'system',
-                                content: `你是一位有20年经验的国际少儿中文教师，正在教一个完全零基础的外国孩子学中文。\n\n规则：\n1. 每次只输出1-2个汉字，绝不超过3个\n2. 每个汉字必须标注拼音，格式：字(pinyin)\n3. 必须配一个emoji帮助理解\n4. 用简单英语解释含义（1-2个词）\n5. 语气像幼儿园老师：温柔、活泼、多用表情\n6. 每次回复不超过80个中文字\n7. 孩子名字：${appData.studentName}\n8. 当前等级：Level ${appData.level}，已学汉字：${appData.learnedChars.join('、')}`
-                            },
-                            {role: 'user', content: message}
-                        ],
-                        temperature: 0.7,
-                        max_tokens: 300
-                    })
-                });
-                removeLoadingMessage(loadingId);
-                if (!response.ok) {
-                    throw new Error('API 请求失败');
-                }
-                const data = await response.json();
-                const reply = data.choices[0].message.content;
-                addChatMessage(reply, 'teacher');
-            } catch (error) {
-                removeLoadingMessage(loadingId);
-                addChatMessage('哎呀，连接出问题了 😅 请检查一下 API Key 是否正确，或者稍后再试~', 'teacher');
+
+            // 记录已写
+            if (appData.currentChar && !appData.writtenChars.includes(appData.currentChar.char)) {
+                appData.writtenChars.push(appData.currentChar.char);
+                appData.totalStars += 10;
+                saveData();
+                updateStats();
+                updateBadges();
             }
+
+            // 显示成功
+            document.getElementById('successOverlay').classList.add('show');
+            showStarAnimation();
         }
-        function addChatMessage(text, role) {
-            const chatArea = document.getElementById('chatArea');
-            const msgDiv = document.createElement('div');
-            msgDiv.className = 'chat-message';
-            msgDiv.innerHTML = `
-                <div class="chat-avatar ${role}">${role === 'teacher' ? '👩‍🏫' : '👶'}</div>
-                <div class="chat-bubble ${role}">${text}</div>
-            `;
-            chatArea.appendChild(msgDiv);
-            chatArea.scrollTop = chatArea.scrollHeight;
+
+        function closeSuccess() {
+            document.getElementById('successOverlay').classList.remove('show');
+            clearCanvas();
         }
-        function addLoadingMessage() {
-            const chatArea = document.getElementById('chatArea');
-            const id = 'loading-' + Date.now();
-            const msgDiv = document.createElement('div');
-            msgDiv.id = id;
-            msgDiv.className = 'chat-message';
-            msgDiv.innerHTML = `
-                <div class="chat-avatar teacher">👩‍🏫</div>
-                <div class="chat-bubble">
-                    <div class="loading">
-                        <div class="loading-dot"></div>
-                        <div class="loading-dot"></div>
-                        <div class="loading-dot"></div>
-                    </div>
-                </div>
-            `;
-            chatArea.appendChild(msgDiv);
-            chatArea.scrollTop = chatArea.scrollHeight;
-            return id;
+
+        function nextChar() {
+            clearCanvas();
+            // 切换回学习标签
+            document.querySelectorAll('.nav-tab')[0].click();
+            startLearning();
         }
-        function removeLoadingMessage(id) {
-            const el = document.getElementById(id);
-            if (el) el.remove();
-        }
+
+        // ==================== 设置功能 ====================
         function saveSettings() {
             appData.apiKey = document.getElementById('apiKeyInput').value.trim();
             appData.studentName = document.getElementById('studentName').value.trim() || '小朋友';
@@ -839,9 +875,11 @@ loadCharLibrary();
             updateStats();
             alert('设置已保存！✅');
         }
+
         function resetProgress() {
-            if (confirm('确定要重置所有学习进度吗？这将清除所有已学汉字和星星。')) {
+            if (confirm('确定要重置所有学习进度吗？')) {
                 appData.learnedChars = [];
+                appData.writtenChars = [];
                 appData.totalStars = 0;
                 appData.level = 1;
                 appData.streakDays = 1;
@@ -851,15 +889,18 @@ loadCharLibrary();
                 alert('进度已重置！重新开始学习吧！🌟');
             }
         }
+
         function saveData() {
             localStorage.setItem('kimi_api_key', appData.apiKey);
             localStorage.setItem('student_name', appData.studentName);
             localStorage.setItem('current_level', appData.level);
             localStorage.setItem('learned_chars', JSON.stringify(appData.learnedChars));
+            localStorage.setItem('written_chars', JSON.stringify(appData.writtenChars));
             localStorage.setItem('total_stars', appData.totalStars);
             localStorage.setItem('streak_days', appData.streakDays);
             localStorage.setItem('last_learn_date', appData.lastLearnDate);
         }
+
         function showStarAnimation() {
             const star = document.createElement('div');
             star.className = 'star-pop';
@@ -869,6 +910,21 @@ loadCharLibrary();
             document.body.appendChild(star);
             setTimeout(() => star.remove(), 1000);
         }
+
+        // 窗口大小改变时重新设置 canvas
+        window.addEventListener('resize', () => {
+            if (canvas) {
+                const box = document.getElementById('writeBox');
+                canvas.width = box.offsetWidth;
+                canvas.height = box.offsetHeight;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.lineWidth = 8;
+                ctx.strokeStyle = '#E85D4E';
+            }
+        });
+
+        // 初始化
         init();
     </script>
 </body>
