@@ -1,0 +1,2368 @@
+{
+  "1": {
+    "name": "一年级上册",
+    "chars": [
+      {
+        "char": "一",
+        "pinyin": "yī",
+        "meaning": "one",
+        "emoji": "1️⃣"
+      },
+      {
+        "char": "二",
+        "pinyin": "èr",
+        "meaning": "two",
+        "emoji": "2️⃣"
+      },
+      {
+        "char": "三",
+        "pinyin": "sān",
+        "meaning": "three",
+        "emoji": "3️⃣"
+      },
+      {
+        "char": "十",
+        "pinyin": "shí",
+        "meaning": "ten",
+        "emoji": "🔟"
+      },
+      {
+        "char": "木",
+        "pinyin": "mù",
+        "meaning": "wood",
+        "emoji": "🌲"
+      },
+      {
+        "char": "禾",
+        "pinyin": "hé",
+        "meaning": "grain",
+        "emoji": "🌾"
+      },
+      {
+        "char": "上",
+        "pinyin": "shàng",
+        "meaning": "up",
+        "emoji": "⬆️"
+      },
+      {
+        "char": "下",
+        "pinyin": "xià",
+        "meaning": "down",
+        "emoji": "⬇️"
+      },
+      {
+        "char": "土",
+        "pinyin": "tǔ",
+        "meaning": "earth",
+        "emoji": "🌍"
+      },
+      {
+        "char": "个",
+        "pinyin": "gè",
+        "meaning": "one",
+        "emoji": "📏"
+      },
+      {
+        "char": "八",
+        "pinyin": "bā",
+        "meaning": "eight",
+        "emoji": "8️⃣"
+      },
+      {
+        "char": "入",
+        "pinyin": "rù",
+        "meaning": "enter",
+        "emoji": "🚪"
+      },
+      {
+        "char": "大",
+        "pinyin": "dà",
+        "meaning": "big",
+        "emoji": "👐"
+      },
+      {
+        "char": "天",
+        "pinyin": "tiān",
+        "meaning": "sky",
+        "emoji": "🌤️"
+      },
+      {
+        "char": "人",
+        "pinyin": "rén",
+        "meaning": "person",
+        "emoji": "🧍"
+      },
+      {
+        "char": "火",
+        "pinyin": "huǒ",
+        "meaning": "fire",
+        "emoji": "🔥"
+      },
+      {
+        "char": "文",
+        "pinyin": "wén",
+        "meaning": "writing",
+        "emoji": "✍️"
+      },
+      {
+        "char": "六",
+        "pinyin": "liù",
+        "meaning": "six",
+        "emoji": "6️⃣"
+      },
+      {
+        "char": "七",
+        "pinyin": "qī",
+        "meaning": "seven",
+        "emoji": "7️⃣"
+      },
+      {
+        "char": "儿",
+        "pinyin": "ér",
+        "meaning": "child",
+        "emoji": "👶"
+      },
+      {
+        "char": "九",
+        "pinyin": "jiǔ",
+        "meaning": "nine",
+        "emoji": "9️⃣"
+      },
+      {
+        "char": "无",
+        "pinyin": "wú",
+        "meaning": "none",
+        "emoji": "🚫"
+      },
+      {
+        "char": "口",
+        "pinyin": "kǒu",
+        "meaning": "mouth",
+        "emoji": "👄"
+      },
+      {
+        "char": "日",
+        "pinyin": "rì",
+        "meaning": "sun",
+        "emoji": "☀️"
+      },
+      {
+        "char": "中",
+        "pinyin": "zhōng",
+        "meaning": "middle",
+        "emoji": "🎯"
+      },
+      {
+        "char": "了",
+        "pinyin": "le",
+        "meaning": "done",
+        "emoji": "✅"
+      },
+      {
+        "char": "子",
+        "pinyin": "zǐ",
+        "meaning": "child",
+        "emoji": "👶"
+      },
+      {
+        "char": "门",
+        "pinyin": "mén",
+        "meaning": "door",
+        "emoji": "🚪"
+      },
+      {
+        "char": "月",
+        "pinyin": "yuè",
+        "meaning": "moon",
+        "emoji": "🌙"
+      },
+      {
+        "char": "不",
+        "pinyin": "bù",
+        "meaning": "no",
+        "emoji": "❌"
+      },
+      {
+        "char": "开",
+        "pinyin": "kāi",
+        "meaning": "open",
+        "emoji": "🔓"
+      },
+      {
+        "char": "四",
+        "pinyin": "sì",
+        "meaning": "four",
+        "emoji": "4️⃣"
+      },
+      {
+        "char": "五",
+        "pinyin": "wǔ",
+        "meaning": "five",
+        "emoji": "5️⃣"
+      },
+      {
+        "char": "目",
+        "pinyin": "mù",
+        "meaning": "eye",
+        "emoji": "👁️"
+      },
+      {
+        "char": "耳",
+        "pinyin": "ěr",
+        "meaning": "ear",
+        "emoji": "👂"
+      },
+      {
+        "char": "头",
+        "pinyin": "tóu",
+        "meaning": "head",
+        "emoji": "👤"
+      },
+      {
+        "char": "米",
+        "pinyin": "mǐ",
+        "meaning": "rice",
+        "emoji": "🍚"
+      },
+      {
+        "char": "见",
+        "pinyin": "jiàn",
+        "meaning": "see",
+        "emoji": "👀"
+      },
+      {
+        "char": "白",
+        "pinyin": "bái",
+        "meaning": "white",
+        "emoji": "⚪"
+      },
+      {
+        "char": "田",
+        "pinyin": "tián",
+        "meaning": "field",
+        "emoji": "🌾"
+      },
+      {
+        "char": "电",
+        "pinyin": "diàn",
+        "meaning": "electricity",
+        "emoji": "⚡"
+      },
+      {
+        "char": "也",
+        "pinyin": "yě",
+        "meaning": "also",
+        "emoji": "✨"
+      },
+      {
+        "char": "长",
+        "pinyin": "cháng",
+        "meaning": "long",
+        "emoji": "📏"
+      },
+      {
+        "char": "山",
+        "pinyin": "shān",
+        "meaning": "mountain",
+        "emoji": "⛰️"
+      },
+      {
+        "char": "出",
+        "pinyin": "chū",
+        "meaning": "go out",
+        "emoji": "🚪"
+      },
+      {
+        "char": "飞",
+        "pinyin": "fēi",
+        "meaning": "fly",
+        "emoji": "🦅"
+      },
+      {
+        "char": "马",
+        "pinyin": "mǎ",
+        "meaning": "horse",
+        "emoji": "🐴"
+      },
+      {
+        "char": "鸟",
+        "pinyin": "niǎo",
+        "meaning": "bird",
+        "emoji": "🐦"
+      },
+      {
+        "char": "云",
+        "pinyin": "yún",
+        "meaning": "cloud",
+        "emoji": "☁️"
+      },
+      {
+        "char": "公",
+        "pinyin": "gōng",
+        "meaning": "public",
+        "emoji": "🏛️"
+      },
+      {
+        "char": "车",
+        "pinyin": "chē",
+        "meaning": "car",
+        "emoji": "🚗"
+      },
+      {
+        "char": "牛",
+        "pinyin": "niú",
+        "meaning": "cow",
+        "emoji": "🐮"
+      },
+      {
+        "char": "羊",
+        "pinyin": "yáng",
+        "meaning": "sheep",
+        "emoji": "🐑"
+      },
+      {
+        "char": "小",
+        "pinyin": "xiǎo",
+        "meaning": "small",
+        "emoji": "👶"
+      },
+      {
+        "char": "少",
+        "pinyin": "shǎo",
+        "meaning": "few",
+        "emoji": "🔽"
+      },
+      {
+        "char": "巾",
+        "pinyin": "jīn",
+        "meaning": "towel",
+        "emoji": "🧣"
+      },
+      {
+        "char": "牙",
+        "pinyin": "yá",
+        "meaning": "tooth",
+        "emoji": "🦷"
+      },
+      {
+        "char": "尺",
+        "pinyin": "chǐ",
+        "meaning": "ruler",
+        "emoji": "📏"
+      },
+      {
+        "char": "毛",
+        "pinyin": "máo",
+        "meaning": "hair",
+        "emoji": "💇"
+      },
+      {
+        "char": "卜",
+        "pinyin": "bo",
+        "meaning": "divine",
+        "emoji": "🔮"
+      },
+      {
+        "char": "又",
+        "pinyin": "yòu",
+        "meaning": "again",
+        "emoji": "🔄"
+      },
+      {
+        "char": "心",
+        "pinyin": "xīn",
+        "meaning": "heart",
+        "emoji": "❤️"
+      },
+      {
+        "char": "风",
+        "pinyin": "fēng",
+        "meaning": "wind",
+        "emoji": "💨"
+      },
+      {
+        "char": "力",
+        "pinyin": "lì",
+        "meaning": "power",
+        "emoji": "💪"
+      },
+      {
+        "char": "手",
+        "pinyin": "shǒu",
+        "meaning": "hand",
+        "emoji": "✋"
+      },
+      {
+        "char": "水",
+        "pinyin": "shuǐ",
+        "meaning": "water",
+        "emoji": "💧"
+      },
+      {
+        "char": "广",
+        "pinyin": "guǎng",
+        "meaning": "wide",
+        "emoji": "🏢"
+      },
+      {
+        "char": "升",
+        "pinyin": "shēng",
+        "meaning": "rise",
+        "emoji": "📈"
+      },
+      {
+        "char": "足",
+        "pinyin": "zú",
+        "meaning": "foot",
+        "emoji": "🦶"
+      },
+      {
+        "char": "走",
+        "pinyin": "zǒu",
+        "meaning": "walk",
+        "emoji": "🚶"
+      },
+      {
+        "char": "方",
+        "pinyin": "fāng",
+        "meaning": "square",
+        "emoji": "⬜"
+      },
+      {
+        "char": "半",
+        "pinyin": "bàn",
+        "meaning": "half",
+        "emoji": "🌗"
+      },
+      {
+        "char": "巴",
+        "pinyin": "bā",
+        "meaning": "ba",
+        "emoji": "🐍"
+      },
+      {
+        "char": "业",
+        "pinyin": "yè",
+        "meaning": "industry",
+        "emoji": "🏭"
+      },
+      {
+        "char": "本",
+        "pinyin": "běn",
+        "meaning": "book",
+        "emoji": "📖"
+      },
+      {
+        "char": "平",
+        "pinyin": "píng",
+        "meaning": "flat",
+        "emoji": "➖"
+      },
+      {
+        "char": "书",
+        "pinyin": "shū",
+        "meaning": "book",
+        "emoji": "📚"
+      },
+      {
+        "char": "自",
+        "pinyin": "zì",
+        "meaning": "self",
+        "emoji": "🧍"
+      },
+      {
+        "char": "已",
+        "pinyin": "yǐ",
+        "meaning": "already",
+        "emoji": "✅"
+      },
+      {
+        "char": "东",
+        "pinyin": "dōng",
+        "meaning": "east",
+        "emoji": "🌅"
+      },
+      {
+        "char": "西",
+        "pinyin": "xī",
+        "meaning": "west",
+        "emoji": "🌇"
+      },
+      {
+        "char": "回",
+        "pinyin": "huí",
+        "meaning": "return",
+        "emoji": "🔙"
+      },
+      {
+        "char": "片",
+        "pinyin": "piàn",
+        "meaning": "slice",
+        "emoji": "🍕"
+      },
+      {
+        "char": "皮",
+        "pinyin": "pí",
+        "meaning": "skin",
+        "emoji": "🍊"
+      },
+      {
+        "char": "生",
+        "pinyin": "shēng",
+        "meaning": "life",
+        "emoji": "🌱"
+      },
+      {
+        "char": "里",
+        "pinyin": "lǐ",
+        "meaning": "inside",
+        "emoji": "📦"
+      },
+      {
+        "char": "果",
+        "pinyin": "guǒ",
+        "meaning": "fruit",
+        "emoji": "🍎"
+      },
+      {
+        "char": "几",
+        "pinyin": "jǐ",
+        "meaning": "how many",
+        "emoji": "❓"
+      },
+      {
+        "char": "用",
+        "pinyin": "yòng",
+        "meaning": "use",
+        "emoji": "🛠️"
+      },
+      {
+        "char": "鱼",
+        "pinyin": "yú",
+        "meaning": "fish",
+        "emoji": "🐟"
+      },
+      {
+        "char": "今",
+        "pinyin": "jīn",
+        "meaning": "today",
+        "emoji": "📅"
+      },
+      {
+        "char": "正",
+        "pinyin": "zhèng",
+        "meaning": "correct",
+        "emoji": "✅"
+      },
+      {
+        "char": "雨",
+        "pinyin": "yǔ",
+        "meaning": "rain",
+        "emoji": "🌧️"
+      },
+      {
+        "char": "两",
+        "pinyin": "liǎng",
+        "meaning": "two",
+        "emoji": "2️⃣"
+      },
+      {
+        "char": "瓜",
+        "pinyin": "guā",
+        "meaning": "melon",
+        "emoji": "🍉"
+      },
+      {
+        "char": "衣",
+        "pinyin": "yī",
+        "meaning": "clothes",
+        "emoji": "👕"
+      },
+      {
+        "char": "来",
+        "pinyin": "lái",
+        "meaning": "come",
+        "emoji": "🚶"
+      },
+      {
+        "char": "年",
+        "pinyin": "nián",
+        "meaning": "year",
+        "emoji": "📆"
+      },
+      {
+        "char": "左",
+        "pinyin": "zuǒ",
+        "meaning": "left",
+        "emoji": "⬅️"
+      },
+      {
+        "char": "右",
+        "pinyin": "yòu",
+        "meaning": "right",
+        "emoji": "➡️"
+      },
+      {
+        "char": "万",
+        "pinyin": "wàn",
+        "meaning": "ten thousand",
+        "emoji": "💰"
+      }
+    ]
+  },
+  "2": {
+    "name": "一年级下册",
+    "chars": [
+      {
+        "char": "春",
+        "pinyin": "chūn",
+        "meaning": "spring",
+        "emoji": "🌸"
+      },
+      {
+        "char": "冬",
+        "pinyin": "dōng",
+        "meaning": "winter",
+        "emoji": "❄️"
+      },
+      {
+        "char": "风",
+        "pinyin": "fēng",
+        "meaning": "wind",
+        "emoji": "💨"
+      },
+      {
+        "char": "雪",
+        "pinyin": "xuě",
+        "meaning": "snow",
+        "emoji": "🌨️"
+      },
+      {
+        "char": "花",
+        "pinyin": "huā",
+        "meaning": "flower",
+        "emoji": "🌺"
+      },
+      {
+        "char": "姓",
+        "pinyin": "xìng",
+        "meaning": "surname",
+        "emoji": "📛"
+      },
+      {
+        "char": "什",
+        "pinyin": "shén",
+        "meaning": "what",
+        "emoji": "❓"
+      },
+      {
+        "char": "么",
+        "pinyin": "me",
+        "meaning": "what",
+        "emoji": "❓"
+      },
+      {
+        "char": "双",
+        "pinyin": "shuāng",
+        "meaning": "pair",
+        "emoji": "👥"
+      },
+      {
+        "char": "国",
+        "pinyin": "guó",
+        "meaning": "country",
+        "emoji": "🇨🇳"
+      },
+      {
+        "char": "王",
+        "pinyin": "wáng",
+        "meaning": "king",
+        "emoji": "👑"
+      },
+      {
+        "char": "青",
+        "pinyin": "qīng",
+        "meaning": "green",
+        "emoji": "🟢"
+      },
+      {
+        "char": "清",
+        "pinyin": "qīng",
+        "meaning": "clear",
+        "emoji": "💧"
+      },
+      {
+        "char": "气",
+        "pinyin": "qì",
+        "meaning": "air",
+        "emoji": "💨"
+      },
+      {
+        "char": "晴",
+        "pinyin": "qíng",
+        "meaning": "sunny",
+        "emoji": "☀️"
+      },
+      {
+        "char": "情",
+        "pinyin": "qíng",
+        "meaning": "feeling",
+        "emoji": "💕"
+      },
+      {
+        "char": "请",
+        "pinyin": "qǐng",
+        "meaning": "please",
+        "emoji": "🙏"
+      },
+      {
+        "char": "字",
+        "pinyin": "zì",
+        "meaning": "character",
+        "emoji": "🔤"
+      },
+      {
+        "char": "红",
+        "pinyin": "hóng",
+        "meaning": "red",
+        "emoji": "🔴"
+      },
+      {
+        "char": "时",
+        "pinyin": "shí",
+        "meaning": "time",
+        "emoji": "⏰"
+      },
+      {
+        "char": "动",
+        "pinyin": "dòng",
+        "meaning": "move",
+        "emoji": "🏃"
+      },
+      {
+        "char": "吃",
+        "pinyin": "chī",
+        "meaning": "eat",
+        "emoji": "🍽️"
+      },
+      {
+        "char": "叫",
+        "pinyin": "jiào",
+        "meaning": "call",
+        "emoji": "📢"
+      },
+      {
+        "char": "主",
+        "pinyin": "zhǔ",
+        "meaning": "master",
+        "emoji": "👑"
+      },
+      {
+        "char": "江",
+        "pinyin": "jiāng",
+        "meaning": "river",
+        "emoji": "🌊"
+      },
+      {
+        "char": "住",
+        "pinyin": "zhù",
+        "meaning": "live",
+        "emoji": "🏠"
+      },
+      {
+        "char": "没",
+        "pinyin": "méi",
+        "meaning": "none",
+        "emoji": "🚫"
+      },
+      {
+        "char": "以",
+        "pinyin": "yǐ",
+        "meaning": "use",
+        "emoji": "🎯"
+      },
+      {
+        "char": "会",
+        "pinyin": "huì",
+        "meaning": "can",
+        "emoji": "✅"
+      },
+      {
+        "char": "北",
+        "pinyin": "běi",
+        "meaning": "north",
+        "emoji": "🧭"
+      },
+      {
+        "char": "京",
+        "pinyin": "jīng",
+        "meaning": "capital",
+        "emoji": "🏛️"
+      },
+      {
+        "char": "过",
+        "pinyin": "guò",
+        "meaning": "pass",
+        "emoji": "🚶"
+      },
+      {
+        "char": "各",
+        "pinyin": "gè",
+        "meaning": "each",
+        "emoji": "👥"
+      },
+      {
+        "char": "种",
+        "pinyin": "zhǒng",
+        "meaning": "kind",
+        "emoji": "🌱"
+      },
+      {
+        "char": "样",
+        "pinyin": "yàng",
+        "meaning": "appearance",
+        "emoji": "🎭"
+      },
+      {
+        "char": "伙",
+        "pinyin": "huǒ",
+        "meaning": "partner",
+        "emoji": "👥"
+      },
+      {
+        "char": "伴",
+        "pinyin": "bàn",
+        "meaning": "companion",
+        "emoji": "👫"
+      },
+      {
+        "char": "这",
+        "pinyin": "zhè",
+        "meaning": "this",
+        "emoji": "👆"
+      },
+      {
+        "char": "太",
+        "pinyin": "tài",
+        "meaning": "too",
+        "emoji": "😲"
+      },
+      {
+        "char": "阳",
+        "pinyin": "yáng",
+        "meaning": "sun",
+        "emoji": "☀️"
+      },
+      {
+        "char": "金",
+        "pinyin": "jīn",
+        "meaning": "gold",
+        "emoji": "🥇"
+      },
+      {
+        "char": "秋",
+        "pinyin": "qiū",
+        "meaning": "autumn",
+        "emoji": "🍂"
+      },
+      {
+        "char": "因",
+        "pinyin": "yīn",
+        "meaning": "because",
+        "emoji": "🤔"
+      },
+      {
+        "char": "为",
+        "pinyin": "wèi",
+        "meaning": "for",
+        "emoji": "🎯"
+      },
+      {
+        "char": "他",
+        "pinyin": "tā",
+        "meaning": "he",
+        "emoji": "👨"
+      },
+      {
+        "char": "地",
+        "pinyin": "dì",
+        "meaning": "ground",
+        "emoji": "🌍"
+      },
+      {
+        "char": "她",
+        "pinyin": "tā",
+        "meaning": "she",
+        "emoji": "👩"
+      },
+      {
+        "char": "河",
+        "pinyin": "hé",
+        "meaning": "river",
+        "emoji": "🌊"
+      },
+      {
+        "char": "说",
+        "pinyin": "shuō",
+        "meaning": "say",
+        "emoji": "🗣️"
+      },
+      {
+        "char": "听",
+        "pinyin": "tīng",
+        "meaning": "listen",
+        "emoji": "👂"
+      },
+      {
+        "char": "哥",
+        "pinyin": "gē",
+        "meaning": "brother",
+        "emoji": "👦"
+      },
+      {
+        "char": "单",
+        "pinyin": "dān",
+        "meaning": "single",
+        "emoji": "1️⃣"
+      },
+      {
+        "char": "居",
+        "pinyin": "jū",
+        "meaning": "live",
+        "emoji": "🏠"
+      },
+      {
+        "char": "招",
+        "pinyin": "zhāo",
+        "meaning": "recruit",
+        "emoji": "👋"
+      },
+      {
+        "char": "呼",
+        "pinyin": "hū",
+        "meaning": "call",
+        "emoji": "📢"
+      },
+      {
+        "char": "快",
+        "pinyin": "kuài",
+        "meaning": "fast",
+        "emoji": "⚡"
+      },
+      {
+        "char": "乐",
+        "pinyin": "lè",
+        "meaning": "happy",
+        "emoji": "😄"
+      },
+      {
+        "char": "玩",
+        "pinyin": "wán",
+        "meaning": "play",
+        "emoji": "🎮"
+      },
+      {
+        "char": "很",
+        "pinyin": "hěn",
+        "meaning": "very",
+        "emoji": "💯"
+      },
+      {
+        "char": "当",
+        "pinyin": "dāng",
+        "meaning": "when",
+        "emoji": "⏰"
+      },
+      {
+        "char": "音",
+        "pinyin": "yīn",
+        "meaning": "sound",
+        "emoji": "🎵"
+      },
+      {
+        "char": "讲",
+        "pinyin": "jiǎng",
+        "meaning": "speak",
+        "emoji": "🗣️"
+      },
+      {
+        "char": "行",
+        "pinyin": "xíng",
+        "meaning": "walk",
+        "emoji": "🚶"
+      },
+      {
+        "char": "许",
+        "pinyin": "xǔ",
+        "meaning": "allow",
+        "emoji": "✅"
+      },
+      {
+        "char": "思",
+        "pinyin": "sī",
+        "meaning": "think",
+        "emoji": "🤔"
+      },
+      {
+        "char": "床",
+        "pinyin": "chuáng",
+        "meaning": "bed",
+        "emoji": "🛏️"
+      },
+      {
+        "char": "前",
+        "pinyin": "qián",
+        "meaning": "front",
+        "emoji": "⬆️"
+      },
+      {
+        "char": "光",
+        "pinyin": "guāng",
+        "meaning": "light",
+        "emoji": "💡"
+      },
+      {
+        "char": "低",
+        "pinyin": "dī",
+        "meaning": "low",
+        "emoji": "🔽"
+      },
+      {
+        "char": "故",
+        "pinyin": "gù",
+        "meaning": "old",
+        "emoji": "📜"
+      },
+      {
+        "char": "乡",
+        "pinyin": "xiāng",
+        "meaning": "hometown",
+        "emoji": "🏘️"
+      },
+      {
+        "char": "色",
+        "pinyin": "sè",
+        "meaning": "color",
+        "emoji": "🎨"
+      },
+      {
+        "char": "外",
+        "pinyin": "wài",
+        "meaning": "outside",
+        "emoji": "🚪"
+      },
+      {
+        "char": "看",
+        "pinyin": "kàn",
+        "meaning": "look",
+        "emoji": "👀"
+      },
+      {
+        "char": "爸",
+        "pinyin": "bà",
+        "meaning": "dad",
+        "emoji": "👨"
+      },
+      {
+        "char": "晚",
+        "pinyin": "wǎn",
+        "meaning": "evening",
+        "emoji": "🌙"
+      },
+      {
+        "char": "笑",
+        "pinyin": "xiào",
+        "meaning": "smile",
+        "emoji": "😊"
+      },
+      {
+        "char": "再",
+        "pinyin": "zài",
+        "meaning": "again",
+        "emoji": "🔄"
+      },
+      {
+        "char": "午",
+        "pinyin": "wǔ",
+        "meaning": "noon",
+        "emoji": "🕛"
+      },
+      {
+        "char": "节",
+        "pinyin": "jié",
+        "meaning": "festival",
+        "emoji": "🎉"
+      },
+      {
+        "char": "叶",
+        "pinyin": "yè",
+        "meaning": "leaf",
+        "emoji": "🍃"
+      },
+      {
+        "char": "真",
+        "pinyin": "zhēn",
+        "meaning": "real",
+        "emoji": "✅"
+      },
+      {
+        "char": "分",
+        "pinyin": "fēn",
+        "meaning": "minute",
+        "emoji": "⏱️"
+      },
+      {
+        "char": "豆",
+        "pinyin": "dòu",
+        "meaning": "bean",
+        "emoji": "🫘"
+      },
+      {
+        "char": "那",
+        "pinyin": "nà",
+        "meaning": "that",
+        "emoji": "👈"
+      },
+      {
+        "char": "着",
+        "pinyin": "zhe",
+        "meaning": "-ing",
+        "emoji": "👀"
+      },
+      {
+        "char": "到",
+        "pinyin": "dào",
+        "meaning": "arrive",
+        "emoji": "📍"
+      },
+      {
+        "char": "高",
+        "pinyin": "gāo",
+        "meaning": "tall",
+        "emoji": "📏"
+      },
+      {
+        "char": "千",
+        "pinyin": "qiān",
+        "meaning": "thousand",
+        "emoji": "🔢"
+      },
+      {
+        "char": "干",
+        "pinyin": "gān",
+        "meaning": "dry",
+        "emoji": "🏜️"
+      }
+    ]
+  },
+  "3": {
+    "name": "二年级",
+    "chars": [
+      {
+        "char": "两",
+        "pinyin": "liǎng",
+        "meaning": "two",
+        "emoji": "2️⃣"
+      },
+      {
+        "char": "哪",
+        "pinyin": "nǎ",
+        "meaning": "which",
+        "emoji": "❓"
+      },
+      {
+        "char": "宽",
+        "pinyin": "kuān",
+        "meaning": "wide",
+        "emoji": "↔️"
+      },
+      {
+        "char": "顶",
+        "pinyin": "dǐng",
+        "meaning": "top",
+        "emoji": "⬆️"
+      },
+      {
+        "char": "眼",
+        "pinyin": "yǎn",
+        "meaning": "eye",
+        "emoji": "👁️"
+      },
+      {
+        "char": "睛",
+        "pinyin": "jīng",
+        "meaning": "eyeball",
+        "emoji": "👁️"
+      },
+      {
+        "char": "肚",
+        "pinyin": "dù",
+        "meaning": "belly",
+        "emoji": "🫃"
+      },
+      {
+        "char": "皮",
+        "pinyin": "pí",
+        "meaning": "skin",
+        "emoji": "🍊"
+      },
+      {
+        "char": "孩",
+        "pinyin": "hái",
+        "meaning": "child",
+        "emoji": "👶"
+      },
+      {
+        "char": "跳",
+        "pinyin": "tiào",
+        "meaning": "jump",
+        "emoji": "🦘"
+      },
+      {
+        "char": "变",
+        "pinyin": "biàn",
+        "meaning": "change",
+        "emoji": "🔄"
+      },
+      {
+        "char": "极",
+        "pinyin": "jí",
+        "meaning": "extreme",
+        "emoji": "📈"
+      },
+      {
+        "char": "傍",
+        "pinyin": "bàng",
+        "meaning": "beside",
+        "emoji": "➡️"
+      },
+      {
+        "char": "海",
+        "pinyin": "hǎi",
+        "meaning": "sea",
+        "emoji": "🌊"
+      },
+      {
+        "char": "洋",
+        "pinyin": "yáng",
+        "meaning": "ocean",
+        "emoji": "🌊"
+      },
+      {
+        "char": "作",
+        "pinyin": "zuò",
+        "meaning": "do",
+        "emoji": "🛠️"
+      },
+      {
+        "char": "坏",
+        "pinyin": "huài",
+        "meaning": "bad",
+        "emoji": "👿"
+      },
+      {
+        "char": "给",
+        "pinyin": "gěi",
+        "meaning": "give",
+        "emoji": "🎁"
+      },
+      {
+        "char": "带",
+        "pinyin": "dài",
+        "meaning": "bring",
+        "emoji": "🎒"
+      },
+      {
+        "char": "法",
+        "pinyin": "fǎ",
+        "meaning": "law",
+        "emoji": "⚖️"
+      },
+      {
+        "char": "如",
+        "pinyin": "rú",
+        "meaning": "if",
+        "emoji": "🤔"
+      },
+      {
+        "char": "脚",
+        "pinyin": "jiǎo",
+        "meaning": "foot",
+        "emoji": "🦶"
+      },
+      {
+        "char": "它",
+        "pinyin": "tā",
+        "meaning": "it",
+        "emoji": "📦"
+      },
+      {
+        "char": "娃",
+        "pinyin": "wá",
+        "meaning": "baby",
+        "emoji": "👶"
+      },
+      {
+        "char": "更",
+        "pinyin": "gèng",
+        "meaning": "more",
+        "emoji": "⬆️"
+      },
+      {
+        "char": "知",
+        "pinyin": "zhī",
+        "meaning": "know",
+        "emoji": "🧠"
+      },
+      {
+        "char": "识",
+        "pinyin": "shí",
+        "meaning": "know",
+        "emoji": "🧠"
+      },
+      {
+        "char": "园",
+        "pinyin": "yuán",
+        "meaning": "garden",
+        "emoji": "🌳"
+      },
+      {
+        "char": "孔",
+        "pinyin": "kǒng",
+        "meaning": "hole",
+        "emoji": "🕳️"
+      },
+      {
+        "char": "雀",
+        "pinyin": "què",
+        "meaning": "sparrow",
+        "emoji": "🐦"
+      },
+      {
+        "char": "群",
+        "pinyin": "qún",
+        "meaning": "group",
+        "emoji": "👥"
+      },
+      {
+        "char": "旗",
+        "pinyin": "qí",
+        "meaning": "flag",
+        "emoji": "🚩"
+      },
+      {
+        "char": "铜",
+        "pinyin": "tóng",
+        "meaning": "copper",
+        "emoji": "🥉"
+      },
+      {
+        "char": "号",
+        "pinyin": "hào",
+        "meaning": "number",
+        "emoji": "🔢"
+      },
+      {
+        "char": "领",
+        "pinyin": "lǐng",
+        "meaning": "lead",
+        "emoji": "🧑‍✈️"
+      },
+      {
+        "char": "杨",
+        "pinyin": "yáng",
+        "meaning": "poplar",
+        "emoji": "🌳"
+      },
+      {
+        "char": "壮",
+        "pinyin": "zhuàng",
+        "meaning": "strong",
+        "emoji": "💪"
+      },
+      {
+        "char": "桐",
+        "pinyin": "tóng",
+        "meaning": "paulownia",
+        "emoji": "🌳"
+      },
+      {
+        "char": "枫",
+        "pinyin": "fēng",
+        "meaning": "maple",
+        "emoji": "🍁"
+      },
+      {
+        "char": "松",
+        "pinyin": "sōng",
+        "meaning": "pine",
+        "emoji": "🌲"
+      },
+      {
+        "char": "柏",
+        "pinyin": "bǎi",
+        "meaning": "cypress",
+        "emoji": "🌲"
+      },
+      {
+        "char": "棉",
+        "pinyin": "mián",
+        "meaning": "cotton",
+        "emoji": "🧶"
+      },
+      {
+        "char": "杉",
+        "pinyin": "shān",
+        "meaning": "fir",
+        "emoji": "🌲"
+      },
+      {
+        "char": "化",
+        "pinyin": "huà",
+        "meaning": "change",
+        "emoji": "🔄"
+      },
+      {
+        "char": "桂",
+        "pinyin": "guì",
+        "meaning": "osmanthus",
+        "emoji": "🌸"
+      },
+      {
+        "char": "歌",
+        "pinyin": "gē",
+        "meaning": "song",
+        "emoji": "🎵"
+      },
+      {
+        "char": "写",
+        "pinyin": "xiě",
+        "meaning": "write",
+        "emoji": "✍️"
+      },
+      {
+        "char": "丛",
+        "pinyin": "cóng",
+        "meaning": "cluster",
+        "emoji": "🌿"
+      },
+      {
+        "char": "深",
+        "pinyin": "shēn",
+        "meaning": "deep",
+        "emoji": "🌊"
+      },
+      {
+        "char": "熊",
+        "pinyin": "xióng",
+        "meaning": "bear",
+        "emoji": "🐻"
+      },
+      {
+        "char": "猫",
+        "pinyin": "māo",
+        "meaning": "cat",
+        "emoji": "🐱"
+      },
+      {
+        "char": "朋",
+        "pinyin": "péng",
+        "meaning": "friend",
+        "emoji": "👫"
+      },
+      {
+        "char": "友",
+        "pinyin": "yǒu",
+        "meaning": "friend",
+        "emoji": "👫"
+      },
+      {
+        "char": "季",
+        "pinyin": "jì",
+        "meaning": "season",
+        "emoji": "🍂"
+      },
+      {
+        "char": "吹",
+        "pinyin": "chuī",
+        "meaning": "blow",
+        "emoji": "💨"
+      },
+      {
+        "char": "肥",
+        "pinyin": "féi",
+        "meaning": "fat",
+        "emoji": "🫃"
+      },
+      {
+        "char": "农",
+        "pinyin": "nóng",
+        "meaning": "farm",
+        "emoji": "🌾"
+      },
+      {
+        "char": "事",
+        "pinyin": "shì",
+        "meaning": "thing",
+        "emoji": "📋"
+      },
+      {
+        "char": "忙",
+        "pinyin": "máng",
+        "meaning": "busy",
+        "emoji": "🏃"
+      },
+      {
+        "char": "归",
+        "pinyin": "guī",
+        "meaning": "return",
+        "emoji": "🏠"
+      },
+      {
+        "char": "戴",
+        "pinyin": "dài",
+        "meaning": "wear",
+        "emoji": "🎩"
+      },
+      {
+        "char": "称",
+        "pinyin": "chēng",
+        "meaning": "call",
+        "emoji": "📢"
+      },
+      {
+        "char": "柱",
+        "pinyin": "zhù",
+        "meaning": "pillar",
+        "emoji": "🏛️"
+      },
+      {
+        "char": "底",
+        "pinyin": "dǐ",
+        "meaning": "bottom",
+        "emoji": "⬇️"
+      },
+      {
+        "char": "杆",
+        "pinyin": "gǎn",
+        "meaning": "pole",
+        "emoji": "🏑"
+      },
+      {
+        "char": "秤",
+        "pinyin": "chèng",
+        "meaning": "scale",
+        "emoji": "⚖️"
+      },
+      {
+        "char": "岁",
+        "pinyin": "suì",
+        "meaning": "year",
+        "emoji": "📅"
+      },
+      {
+        "char": "站",
+        "pinyin": "zhàn",
+        "meaning": "stand",
+        "emoji": "🧍"
+      },
+      {
+        "char": "船",
+        "pinyin": "chuán",
+        "meaning": "boat",
+        "emoji": "🚢"
+      },
+      {
+        "char": "然",
+        "pinyin": "rán",
+        "meaning": "then",
+        "emoji": "➡️"
+      },
+      {
+        "char": "画",
+        "pinyin": "huà",
+        "meaning": "draw",
+        "emoji": "🎨"
+      },
+      {
+        "char": "幅",
+        "pinyin": "fú",
+        "meaning": "measure word",
+        "emoji": "🖼️"
+      },
+      {
+        "char": "奖",
+        "pinyin": "jiǎng",
+        "meaning": "prize",
+        "emoji": "🏆"
+      },
+      {
+        "char": "纸",
+        "pinyin": "zhǐ",
+        "meaning": "paper",
+        "emoji": "📄"
+      },
+      {
+        "char": "报",
+        "pinyin": "bào",
+        "meaning": "report",
+        "emoji": "📰"
+      },
+      {
+        "char": "另",
+        "pinyin": "lìng",
+        "meaning": "another",
+        "emoji": "➡️"
+      },
+      {
+        "char": "及",
+        "pinyin": "jí",
+        "meaning": "and",
+        "emoji": "➕"
+      },
+      {
+        "char": "拿",
+        "pinyin": "ná",
+        "meaning": "take",
+        "emoji": "🤲"
+      },
+      {
+        "char": "并",
+        "pinyin": "bìng",
+        "meaning": "and",
+        "emoji": "➕"
+      },
+      {
+        "char": "封",
+        "pinyin": "fēng",
+        "meaning": "seal",
+        "emoji": "✉️"
+      },
+      {
+        "char": "信",
+        "pinyin": "xìn",
+        "meaning": "letter",
+        "emoji": "✉️"
+      },
+      {
+        "char": "支",
+        "pinyin": "zhī",
+        "meaning": "branch",
+        "emoji": "🌿"
+      },
+      {
+        "char": "圆",
+        "pinyin": "yuán",
+        "meaning": "round",
+        "emoji": "⭕"
+      },
+      {
+        "char": "珠",
+        "pinyin": "zhū",
+        "meaning": "pearl",
+        "emoji": "📿"
+      },
+      {
+        "char": "笔",
+        "pinyin": "bǐ",
+        "meaning": "pen",
+        "emoji": "✏️"
+      },
+      {
+        "char": "灯",
+        "pinyin": "dēng",
+        "meaning": "lamp",
+        "emoji": "💡"
+      },
+      {
+        "char": "影",
+        "pinyin": "yǐng",
+        "meaning": "shadow",
+        "emoji": "🌑"
+      },
+      {
+        "char": "楼",
+        "pinyin": "lóu",
+        "meaning": "building",
+        "emoji": "🏢"
+      },
+      {
+        "char": "依",
+        "pinyin": "yī",
+        "meaning": "rely",
+        "emoji": "🤝"
+      },
+      {
+        "char": "尽",
+        "pinyin": "jìn",
+        "meaning": "exhaust",
+        "emoji": "🔚"
+      },
+      {
+        "char": "黄",
+        "pinyin": "huáng",
+        "meaning": "yellow",
+        "emoji": "🟡"
+      },
+      {
+        "char": "层",
+        "pinyin": "céng",
+        "meaning": "layer",
+        "emoji": "🥞"
+      },
+      {
+        "char": "照",
+        "pinyin": "zhào",
+        "meaning": "shine",
+        "emoji": "☀️"
+      },
+      {
+        "char": "炉",
+        "pinyin": "lú",
+        "meaning": "stove",
+        "emoji": "🔥"
+      },
+      {
+        "char": "烟",
+        "pinyin": "yān",
+        "meaning": "smoke",
+        "emoji": "💨"
+      },
+      {
+        "char": "挂",
+        "pinyin": "guà",
+        "meaning": "hang",
+        "emoji": "🖼️"
+      },
+      {
+        "char": "川",
+        "pinyin": "chuān",
+        "meaning": "river",
+        "emoji": "🌊"
+      },
+      {
+        "char": "南",
+        "pinyin": "nán",
+        "meaning": "south",
+        "emoji": "🧭"
+      },
+      {
+        "char": "部",
+        "pinyin": "bù",
+        "meaning": "part",
+        "emoji": "📦"
+      },
+      {
+        "char": "些",
+        "pinyin": "xiē",
+        "meaning": "some",
+        "emoji": "🔢"
+      },
+      {
+        "char": "巨",
+        "pinyin": "jù",
+        "meaning": "huge",
+        "emoji": "🏔️"
+      },
+      {
+        "char": "位",
+        "pinyin": "wèi",
+        "meaning": "position",
+        "emoji": "📍"
+      },
+      {
+        "char": "向",
+        "pinyin": "xiàng",
+        "meaning": "toward",
+        "emoji": "➡️"
+      },
+      {
+        "char": "每",
+        "pinyin": "měi",
+        "meaning": "every",
+        "emoji": "📅"
+      },
+      {
+        "char": "升",
+        "pinyin": "shēng",
+        "meaning": "rise",
+        "emoji": "📈"
+      },
+      {
+        "char": "闪",
+        "pinyin": "shǎn",
+        "meaning": "flash",
+        "emoji": "✨"
+      },
+      {
+        "char": "狗",
+        "pinyin": "gǒu",
+        "meaning": "dog",
+        "emoji": "🐕"
+      },
+      {
+        "char": "名",
+        "pinyin": "míng",
+        "meaning": "name",
+        "emoji": "📛"
+      },
+      {
+        "char": "胜",
+        "pinyin": "shèng",
+        "meaning": "win",
+        "emoji": "🏆"
+      },
+      {
+        "char": "迹",
+        "pinyin": "jì",
+        "meaning": "trace",
+        "emoji": "👣"
+      },
+      {
+        "char": "央",
+        "pinyin": "yāng",
+        "meaning": "center",
+        "emoji": "🎯"
+      },
+      {
+        "char": "丽",
+        "pinyin": "lì",
+        "meaning": "beautiful",
+        "emoji": "🌸"
+      },
+      {
+        "char": "华",
+        "pinyin": "huá",
+        "meaning": "splendid",
+        "emoji": "✨"
+      },
+      {
+        "char": "展",
+        "pinyin": "zhǎn",
+        "meaning": "display",
+        "emoji": "🖼️"
+      },
+      {
+        "char": "现",
+        "pinyin": "xiàn",
+        "meaning": "now",
+        "emoji": "⏰"
+      },
+      {
+        "char": "披",
+        "pinyin": "pī",
+        "meaning": "drape",
+        "emoji": "🧣"
+      },
+      {
+        "char": "份",
+        "pinyin": "fèn",
+        "meaning": "portion",
+        "emoji": "📦"
+      },
+      {
+        "char": "坡",
+        "pinyin": "pō",
+        "meaning": "slope",
+        "emoji": "⛰️"
+      },
+      {
+        "char": "梯",
+        "pinyin": "tī",
+        "meaning": "ladder",
+        "emoji": "🪜"
+      },
+      {
+        "char": "客",
+        "pinyin": "kè",
+        "meaning": "guest",
+        "emoji": "🧑"
+      },
+      {
+        "char": "收",
+        "pinyin": "shōu",
+        "meaning": "receive",
+        "emoji": "📥"
+      },
+      {
+        "char": "城",
+        "pinyin": "chéng",
+        "meaning": "city",
+        "emoji": "🏙️"
+      },
+      {
+        "char": "市",
+        "pinyin": "shì",
+        "meaning": "city",
+        "emoji": "🏢"
+      },
+      {
+        "char": "利",
+        "pinyin": "lì",
+        "meaning": "benefit",
+        "emoji": "💰"
+      },
+      {
+        "char": "胜",
+        "pinyin": "shèng",
+        "meaning": "win",
+        "emoji": "🏆"
+      }
+    ]
+  },
+  "4": {
+    "name": "三年级",
+    "chars": [
+      {
+        "char": "晨",
+        "pinyin": "chén",
+        "meaning": "morning",
+        "emoji": "🌅"
+      },
+      {
+        "char": "绒",
+        "pinyin": "róng",
+        "meaning": "velvet",
+        "emoji": "🧶"
+      },
+      {
+        "char": "球",
+        "pinyin": "qiú",
+        "meaning": "ball",
+        "emoji": "⚽"
+      },
+      {
+        "char": "汉",
+        "pinyin": "hàn",
+        "meaning": "Han",
+        "emoji": "🇨🇳"
+      },
+      {
+        "char": "艳",
+        "pinyin": "yàn",
+        "meaning": "gorgeous",
+        "emoji": "🌺"
+      },
+      {
+        "char": "装",
+        "pinyin": "zhuāng",
+        "meaning": "dress",
+        "emoji": "👔"
+      },
+      {
+        "char": "扮",
+        "pinyin": "bàn",
+        "meaning": "dress up",
+        "emoji": "🎭"
+      },
+      {
+        "char": "读",
+        "pinyin": "dú",
+        "meaning": "read",
+        "emoji": "📖"
+      },
+      {
+        "char": "静",
+        "pinyin": "jìng",
+        "meaning": "quiet",
+        "emoji": "🤫"
+      },
+      {
+        "char": "停",
+        "pinyin": "tíng",
+        "meaning": "stop",
+        "emoji": "🛑"
+      },
+      {
+        "char": "粗",
+        "pinyin": "cū",
+        "meaning": "thick",
+        "emoji": "📏"
+      },
+      {
+        "char": "影",
+        "pinyin": "yǐng",
+        "meaning": "shadow",
+        "emoji": "🌑"
+      },
+      {
+        "char": "落",
+        "pinyin": "luò",
+        "meaning": "fall",
+        "emoji": "🍂"
+      },
+      {
+        "char": "荒",
+        "pinyin": "huāng",
+        "meaning": "wasteland",
+        "emoji": "🏜️"
+      },
+      {
+        "char": "笛",
+        "pinyin": "dí",
+        "meaning": "flute",
+        "emoji": "🎵"
+      },
+      {
+        "char": "舞",
+        "pinyin": "wǔ",
+        "meaning": "dance",
+        "emoji": "💃"
+      },
+      {
+        "char": "狂",
+        "pinyin": "kuáng",
+        "meaning": "mad",
+        "emoji": "😤"
+      },
+      {
+        "char": "罚",
+        "pinyin": "fá",
+        "meaning": "punish",
+        "emoji": "⚠️"
+      },
+      {
+        "char": "假",
+        "pinyin": "jiǎ",
+        "meaning": "fake",
+        "emoji": "🎭"
+      },
+      {
+        "char": "互",
+        "pinyin": "hù",
+        "meaning": "mutual",
+        "emoji": "🤝"
+      },
+      {
+        "char": "所",
+        "pinyin": "suǒ",
+        "meaning": "place",
+        "emoji": "📍"
+      },
+      {
+        "char": "够",
+        "pinyin": "gòu",
+        "meaning": "enough",
+        "emoji": "✅"
+      },
+      {
+        "char": "猜",
+        "pinyin": "cāi",
+        "meaning": "guess",
+        "emoji": "🤔"
+      },
+      {
+        "char": "扬",
+        "pinyin": "yáng",
+        "meaning": "raise",
+        "emoji": "👆"
+      },
+      {
+        "char": "臂",
+        "pinyin": "bì",
+        "meaning": "arm",
+        "emoji": "💪"
+      },
+      {
+        "char": "寒",
+        "pinyin": "hán",
+        "meaning": "cold",
+        "emoji": "❄️"
+      },
+      {
+        "char": "径",
+        "pinyin": "jìng",
+        "meaning": "path",
+        "emoji": "🛤️"
+      },
+      {
+        "char": "斜",
+        "pinyin": "xié",
+        "meaning": "oblique",
+        "emoji": "📐"
+      },
+      {
+        "char": "霜",
+        "pinyin": "shuāng",
+        "meaning": "frost",
+        "emoji": "❄️"
+      },
+      {
+        "char": "赠",
+        "pinyin": "zèng",
+        "meaning": "give",
+        "emoji": "🎁"
+      },
+      {
+        "char": "刘",
+        "pinyin": "liú",
+        "meaning": "Liu",
+        "emoji": "👤"
+      },
+      {
+        "char": "盖",
+        "pinyin": "gài",
+        "meaning": "cover",
+        "emoji": "🔒"
+      },
+      {
+        "char": "菊",
+        "pinyin": "jú",
+        "meaning": "chrysanthemum",
+        "emoji": "🌼"
+      },
+      {
+        "char": "残",
+        "pinyin": "cán",
+        "meaning": "remain",
+        "emoji": "🍂"
+      },
+      {
+        "char": "君",
+        "pinyin": "jūn",
+        "meaning": "gentleman",
+        "emoji": "👑"
+      },
+      {
+        "char": "橙",
+        "pinyin": "chéng",
+        "meaning": "orange",
+        "emoji": "🍊"
+      },
+      {
+        "char": "送",
+        "pinyin": "sòng",
+        "meaning": "send",
+        "emoji": "📦"
+      },
+      {
+        "char": "挑",
+        "pinyin": "tiāo",
+        "meaning": "choose",
+        "emoji": "🎯"
+      },
+      {
+        "char": "铺",
+        "pinyin": "pū",
+        "meaning": "spread",
+        "emoji": "🛏️"
+      },
+      {
+        "char": "泥",
+        "pinyin": "ní",
+        "meaning": "mud",
+        "emoji": "💩"
+      },
+      {
+        "char": "晶",
+        "pinyin": "jīng",
+        "meaning": "crystal",
+        "emoji": "💎"
+      },
+      {
+        "char": "紧",
+        "pinyin": "jǐn",
+        "meaning": "tight",
+        "emoji": "🔒"
+      },
+      {
+        "char": "洞",
+        "pinyin": "dòng",
+        "meaning": "hole",
+        "emoji": "🕳️"
+      },
+      {
+        "char": "准",
+        "pinyin": "zhǔn",
+        "meaning": "prepare",
+        "emoji": "✅"
+      },
+      {
+        "char": "备",
+        "pinyin": "bèi",
+        "meaning": "prepare",
+        "emoji": "🎒"
+      },
+      {
+        "char": "暴",
+        "pinyin": "bào",
+        "meaning": "violent",
+        "emoji": "⛈️"
+      },
+      {
+        "char": "墙",
+        "pinyin": "qiáng",
+        "meaning": "wall",
+        "emoji": "🧱"
+      },
+      {
+        "char": "壁",
+        "pinyin": "bì",
+        "meaning": "wall",
+        "emoji": "🧱"
+      },
+      {
+        "char": "饿",
+        "pinyin": "è",
+        "meaning": "hungry",
+        "emoji": "🤤"
+      },
+      {
+        "char": "蜘",
+        "pinyin": "zhī",
+        "meaning": "spider",
+        "emoji": "🕷️"
+      },
+      {
+        "char": "蛛",
+        "pinyin": "zhū",
+        "meaning": "spider",
+        "emoji": "🕷️"
+      },
+      {
+        "char": "漂",
+        "pinyin": "piào",
+        "meaning": "float",
+        "emoji": "🚣"
+      },
+      {
+        "char": "撞",
+        "pinyin": "zhuàng",
+        "meaning": "hit",
+        "emoji": "💥"
+      },
+      {
+        "char": "饱",
+        "pinyin": "bǎo",
+        "meaning": "full",
+        "emoji": "🍽️"
+      },
+      {
+        "char": "晒",
+        "pinyin": "shài",
+        "meaning": "dry",
+        "emoji": "☀️"
+      },
+      {
+        "char": "搭",
+        "pinyin": "dā",
+        "meaning": "build",
+        "emoji": "🏗️"
+      },
+      {
+        "char": "父",
+        "pinyin": "fù",
+        "meaning": "father",
+        "emoji": "👨"
+      },
+      {
+        "char": "羽",
+        "pinyin": "yǔ",
+        "meaning": "feather",
+        "emoji": "🪶"
+      },
+      {
+        "char": "翠",
+        "pinyin": "cuì",
+        "meaning": "jade",
+        "emoji": "💚"
+      },
+      {
+        "char": "嘴",
+        "pinyin": "zuǐ",
+        "meaning": "mouth",
+        "emoji": "👄"
+      },
+      {
+        "char": "悄",
+        "pinyin": "qiāo",
+        "meaning": "quiet",
+        "emoji": "🤫"
+      },
+      {
+        "char": "吞",
+        "pinyin": "tūn",
+        "meaning": "swallow",
+        "emoji": "😋"
+      },
+      {
+        "char": "哦",
+        "pinyin": "ò",
+        "meaning": "oh",
+        "emoji": "😮"
+      },
+      {
+        "char": "捕",
+        "pinyin": "bǔ",
+        "meaning": "catch",
+        "emoji": "🎣"
+      },
+      {
+        "char": "蒲",
+        "pinyin": "pú",
+        "meaning": "cattail",
+        "emoji": "🌾"
+      },
+      {
+        "char": "英",
+        "pinyin": "yīng",
+        "meaning": "hero",
+        "emoji": "🦸"
+      },
+      {
+        "char": "耍",
+        "pinyin": "shuǎ",
+        "meaning": "play",
+        "emoji": "🎮"
+      },
+      {
+        "char": "喊",
+        "pinyin": "hǎn",
+        "meaning": "shout",
+        "emoji": "📢"
+      },
+      {
+        "char": "欠",
+        "pinyin": "qiàn",
+        "meaning": "owe",
+        "emoji": "💰"
+      },
+      {
+        "char": "钓",
+        "pinyin": "diào",
+        "meaning": "fish",
+        "emoji": "🎣"
+      },
+      {
+        "char": "而",
+        "pinyin": "ér",
+        "meaning": "and",
+        "emoji": "➕"
+      },
+      {
+        "char": "察",
+        "pinyin": "chá",
+        "meaning": "observe",
+        "emoji": "🔍"
+      },
+      {
+        "char": "拢",
+        "pinyin": "lǒng",
+        "meaning": "gather",
+        "emoji": "🤲"
+      },
+      {
+        "char": "趣",
+        "pinyin": "qù",
+        "meaning": "interest",
+        "emoji": "😄"
+      },
+      {
+        "char": "喜",
+        "pinyin": "xǐ",
+        "meaning": "happy",
+        "emoji": "😊"
+      }
+    ]
+  }
+}
