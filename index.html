@@ -543,52 +543,52 @@
         };
         const LEVEL_TARGETS = [10, 15, 20, 25, 30, 35, 40, 45, 50, 60];
         const LEVEL_NAMES = ['小探险家', '小学徒', '小读者', '小诗人', '小作家', '小翻译', '小学者', '小博士', '小大师', '中文之星'];
-        const CHAR_LIBRARY = {
-            1: [
-                {char: '一', pinyin: 'yī', meaning: 'one', emoji: '1️⃣', stroke: '一'},
-                {char: '二', pinyin: 'èr', meaning: 'two', emoji: '2️⃣', stroke: '一→一'},
-                {char: '三', pinyin: 'sān', meaning: 'three', emoji: '3️⃣', stroke: '一→一→一'},
-                {char: '大', pinyin: 'dà', meaning: 'big', emoji: '👐', stroke: '一→丿→㇏'},
-                {char: '小', pinyin: 'xiǎo', meaning: 'small', emoji: '👶', stroke: '亅→丿→丶'},
-                {char: '人', pinyin: 'rén', meaning: 'person', emoji: '🧍', stroke: '丿→㇏'},
-                {char: '口', pinyin: 'kǒu', meaning: 'mouth', emoji: '👄', stroke: '丨→㇆→一'},
-                {char: '日', pinyin: 'rì', meaning: 'sun/day', emoji: '☀️', stroke: '丨→㇆→一→一'},
-                {char: '月', pinyin: 'yuè', meaning: 'moon/month', emoji: '🌙', stroke: '丿→㇆→一→一'},
-                {char: '水', pinyin: 'shuǐ', meaning: 'water', emoji: '💧', stroke: '亅→㇇→丿→㇏'}
-            ],
-            2: [
-                {char: '火', pinyin: 'huǒ', meaning: 'fire', emoji: '🔥', stroke: '丶→丿→丿→㇏'},
-                {char: '木', pinyin: 'mù', meaning: 'wood/tree', emoji: '🌲', stroke: '一→丨→丿→㇏'},
-                {char: '土', pinyin: 'tǔ', meaning: 'earth', emoji: '🌍', stroke: '一→丨→一'},
-                {char: '山', pinyin: 'shān', meaning: 'mountain', emoji: '⛰️', stroke: '丨→㇗→丨'},
-                {char: '石', pinyin: 'shí', meaning: 'stone', emoji: '🪨', stroke: '一→丿→口'},
-                {char: '田', pinyin: 'tián', meaning: 'field', emoji: '🌾', stroke: '丨→㇆→一→丨→一'},
-                {char: '禾', pinyin: 'hé', meaning: 'grain', emoji: '🌾', stroke: '丿→一→丨→丿→㇏'},
-                {char: '虫', pinyin: 'chóng', meaning: 'insect', emoji: '🐛', stroke: '丨→㇆→一→丨→一'},
-                {char: '云', pinyin: 'yún', meaning: 'cloud', emoji: '☁️', stroke: '一→一→㇆丶'},
-                {char: '雨', pinyin: 'yǔ', meaning: 'rain', emoji: '🌧️', stroke: '一→丨→㇆→丶→丶→丶→丶'}
-            ],
-            3: [
-                {char: '天', pinyin: 'tiān', meaning: 'sky', emoji: '🌤️', stroke: '一→一→丿→㇏'},
-                {char: '地', pinyin: 'dì', meaning: 'ground', emoji: '🌍', stroke: '一→丨→㇀→㇆→丨→乚'},
-                {char: '上', pinyin: 'shàng', meaning: 'up', emoji: '⬆️', stroke: '丨→一→一'},
-                {char: '下', pinyin: 'xià', meaning: 'down', emoji: '⬇️', stroke: '一丨→丶'},
-                {char: '左', pinyin: 'zuǒ', meaning: 'left', emoji: '⬅️', stroke: '一→丿→一→丨→一'},
-                {char: '右', pinyin: 'yòu', meaning: 'right', emoji: '➡️', stroke: '一→丿→一→丨→㇏'},
-                {char: '手', pinyin: 'shǒu', meaning: 'hand', emoji: '✋', stroke: '丿→一→一→㇆→丨'},
-                {char: '足', pinyin: 'zú', meaning: 'foot', emoji: '🦶', stroke: '丨→㇆→一→丿→㇏'},
-                {char: '目', pinyin: 'mù', meaning: 'eye', emoji: '👁️', stroke: '丨→㇆→一→一→一'},
-                {char: '耳', pinyin: 'ěr', meaning: 'ear', emoji: '👂', stroke: '一→丨→丨→一→一'}
-            ]
+        // 从外部 JSON 文件加载字库
+let CHAR_LIBRARY = {};
+
+async function loadCharLibrary() {
+    try {
+        const response = await fetch('char_library.json');
+        const data = await response.json();
+        CHAR_LIBRARY = data;
+        console.log('字库加载成功！');
+    } catch (error) {
+        console.error('字库加载失败:', error);
+        // 如果加载失败，使用内置的简化字库
+        CHAR_LIBRARY = {
+            "1": {
+                "name": "基础汉字",
+                "chars": [
+                    {"char": "一", "pinyin": "yī", "meaning": "one", "emoji": "1️⃣"},
+                    {"char": "二", "pinyin": "èr", "meaning": "two", "emoji": "2️⃣"},
+                    {"char": "三", "pinyin": "sān", "meaning": "three", "emoji": "3️⃣"},
+                    {"char": "大", "pinyin": "dà", "meaning": "big", "emoji": "👐"},
+                    {"char": "小", "pinyin": "xiǎo", "meaning": "small", "emoji": "👶"},
+                    {"char": "人", "pinyin": "rén", "meaning": "person", "emoji": "🧍"},
+                    {"char": "口", "pinyin": "kǒu", "meaning": "mouth", "emoji": "👄"},
+                    {"char": "日", "pinyin": "rì", "meaning": "sun", "emoji": "☀️"},
+                    {"char": "月", "pinyin": "yuè", "meaning": "moon", "emoji": "🌙"},
+                    {"char": "水", "pinyin": "shuǐ", "meaning": "water", "emoji": "💧"}
+                ]
+            }
         };
+    }
+}
+
+// 页面加载时自动加载字库
+loadCharLibrary();
         function init() {
-            document.getElementById('apiKeyInput').value = appData.apiKey;
-            document.getElementById('studentName').value = appData.studentName;
-            document.getElementById('settingsLevel').value = appData.level;
-            updateStats();
-            checkStreak();
-            updateBadges();
-        }
+    document.getElementById('apiKeyInput').value = appData.apiKey;
+    document.getElementById('studentName').value = appData.studentName;
+    document.getElementById('settingsLevel').value = appData.level;
+    
+    // 等待字库加载完成
+    loadCharLibrary().then(() => {
+        updateStats();
+        checkStreak();
+        updateBadges();
+    });
+}
         function updateStats() {
             document.getElementById('streakDays').textContent = appData.streakDays;
             document.getElementById('totalChars').textContent = appData.learnedChars.length;
@@ -640,7 +640,14 @@
             document.getElementById('tab-' + tabName).classList.add('active');
         }
         function startLearning() {
-            const levelChars = CHAR_LIBRARY[appData.level] || CHAR_LIBRARY[3];
+            const levelKey = appData.level.toString();
+            const levelData = CHAR_LIBRARY[levelKey];
+            if (!levelData) {
+                document.getElementById('charDisplay').textContent = '🎉';
+                document.getElementById('pinyinDisplay').textContent = '恭喜！你已经学完了所有汉字！';
+                return;
+        }
+            const levelChars = levelData.chars;
             const unlearned = levelChars.filter(c => !appData.learnedChars.includes(c.char));
             if (unlearned.length === 0) {
                 if (appData.level < 10) {
@@ -675,6 +682,11 @@
             }
         }
         function showQuiz(correctChar, allChars) {
+    const levelKey = appData.level.toString();
+    const levelData = CHAR_LIBRARY[levelKey];
+    if (!levelData) return;
+    allChars = levelData.chars;
+    
             const quizCard = document.getElementById('quizCard');
             const options = document.getElementById('quizOptions');
             quizCard.style.display = 'block';
