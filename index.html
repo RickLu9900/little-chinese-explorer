@@ -2,18 +2,22 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>小小中文家</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
             font-family: -apple-system, 'PingFang SC', 'SF Pro Display', sans-serif;
             background: linear-gradient(135deg, #FFF8E7 0%, #FFE4E1 50%, #E8F5E9 100%);
             min-height: 100vh;
             overflow-x: hidden;
             touch-action: manipulation;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            overscroll-behavior: none;
         }
         .container { max-width: 900px; margin: 0 auto; padding: 16px; }
         .header {
@@ -89,7 +93,6 @@
             background: linear-gradient(90deg, #E85D4E, #FF8A65, #FFB74D);
             border-radius: 12px;
             transition: width 0.8s ease;
-            position: relative;
         }
         .progress-text {
             text-align: center;
@@ -119,6 +122,7 @@
             transition: all 0.2s;
             border: none;
             background: transparent;
+            -webkit-appearance: none;
         }
         .nav-tab.active {
             background: linear-gradient(135deg, #E85D4E, #FF6B6B);
@@ -128,7 +132,6 @@
         .content-area { display: none; }
         .content-area.active { display: block; }
 
-        /* 汉字展示卡片 */
         .char-card {
             background: white;
             border-radius: 24px;
@@ -178,35 +181,7 @@
             gap: 20px;
             flex-wrap: wrap;
         }
-        .write-box {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            border: 3px solid #E85D4E;
-            border-radius: 16px;
-            background: linear-gradient(90deg, transparent 49%, #FFE4E1 49%, #FFE4E1 51%, transparent 51%),
-                        linear-gradient(0deg, transparent 49%, #FFE4E1 49%, #FFE4E1 51%, transparent 51%);
-            background-size: 100% 100%, 100% 100%;
-            overflow: hidden;
-            touch-action: none;
-        }
-        .write-box canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 13px;
-        }
-        .write-label {
-            text-align: center;
-            margin-top: 8px;
-            font-size: 14px;
-            color: #666;
-            font-weight: 600;
-        }
 
-        /* 笔画示范 */
         .stroke-demo {
             position: relative;
             width: 200px;
@@ -217,25 +192,56 @@
             align-items: center;
             justify-content: center;
             background: #FFF8E7;
+            overflow: hidden;
         }
         .stroke-demo .demo-char {
-            font-size: 120px;
+            font-size: 140px;
             color: #E85D4E;
-            opacity: 0.3;
+            opacity: 0.25;
             position: absolute;
+            pointer-events: none;
+            font-family: 'Kaiti', 'STKaiti', '楷体', serif;
         }
-        .stroke-demo .demo-stroke {
-            font-size: 120px;
-            color: #E85D4E;
-            position: absolute;
-            animation: strokeDraw 2s ease-in-out infinite;
-        }
-        @keyframes strokeDraw {
-            0% { clip-path: inset(0 100% 0 0); }
-            100% { clip-path: inset(0 0 0 0); }
+        .write-label {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
         }
 
-        /* 按钮 */
+        /* 手写板 - iOS 优化 */
+        .write-box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 3px solid #E85D4E;
+            border-radius: 16px;
+            background: 
+                linear-gradient(90deg, transparent 49.5%, #FFE4E1 49.5%, #FFE4E1 50.5%, transparent 50.5%),
+                linear-gradient(0deg, transparent 49.5%, #FFE4E1 49.5%, #FFE4E1 50.5%, transparent 50.5%);
+            background-size: 100% 100%, 100% 100%;
+            background-color: white;
+            overflow: hidden;
+            touch-action: none;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            cursor: crosshair;
+        }
+        .write-box canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 13px;
+            touch-action: none;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
         .btn-group {
             display: flex;
             gap: 12px;
@@ -254,6 +260,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            -webkit-appearance: none;
         }
         .btn:active { transform: scale(0.95); }
         .btn-primary {
@@ -271,7 +278,6 @@
             box-shadow: 0 4px 16px rgba(76,175,80,0.3);
         }
 
-        /* 笔画顺序展示 */
         .stroke-order {
             background: #FFF8E7;
             border-radius: 12px;
@@ -283,7 +289,6 @@
             letter-spacing: 4px;
         }
 
-        /* 星星动画 */
         .star-pop {
             position: fixed;
             font-size: 30px;
@@ -296,7 +301,6 @@
             100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
         }
 
-        /* 完成提示 */
         .success-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -321,7 +325,6 @@
         .success-card .big-emoji { font-size: 80px; }
         .success-card h2 { color: #E85D4E; margin: 16px 0; }
 
-        /* 设置面板 */
         .settings-card {
             background: white;
             border-radius: 20px;
@@ -348,7 +351,6 @@
         }
         .setting-input:focus { border-color: #E85D4E; }
 
-        /* 徽章 */
         .badges-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -379,14 +381,24 @@
         }
         .badge-name { font-size: 12px; color: #666; font-weight: 600; }
 
+        .write-hint {
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            margin: 8px 0;
+            padding: 8px;
+            background: #FFF8E7;
+            border-radius: 8px;
+        }
+
         @media (max-width: 600px) {
             .header h1 { font-size: 24px; }
             .char-display { font-size: 80px; }
-            .write-box, .stroke-demo { width: 150px; height: 150px; }
+            .write-box, .stroke-demo { width: 160px; height: 160px; }
+            .stroke-demo .demo-char { font-size: 110px; }
             .badges-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
-<base target="_blank">
 </head>
 <body>
     <div class="container">
@@ -451,6 +463,7 @@
         <div class="content-area" id="tab-write">
             <div class="write-section">
                 <div class="write-title">✏️ 跟着写一写：<span id="writeCharName" style="color:#E85D4E;">请先学习汉字</span></div>
+                <div class="write-hint" id="writeHint">👆 用手指在右边格子里写字</div>
                 <div class="write-container">
                     <div>
                         <div class="stroke-demo" id="strokeDemo">
@@ -526,12 +539,11 @@
         </div>
     </div>
 
-    <!-- 完成提示 -->
     <div class="success-overlay" id="successOverlay">
         <div class="success-card">
             <div class="big-emoji">🎉</div>
             <h2>写得太棒了！</h2>
-            <p style="color:#666;margin:8px 0;">获得 ⭐ 5 颗星星！</p>
+            <p style="color:#666;margin:8px 0;">获得 ⭐ 10 颗星星！</p>
             <button class="btn btn-primary" onclick="closeSuccess()" style="margin-top:16px;">继续学习</button>
         </div>
     </div>
@@ -554,36 +566,115 @@
         const LEVEL_TARGETS = [10, 15, 20, 25, 30, 35, 40, 45, 50, 60];
         const LEVEL_NAMES = ['小探险家', '小学徒', '小读者', '小诗人', '小作家', '小翻译', '小学者', '小博士', '小大师', '中文之星'];
 
-        // ==================== 字库 ====================
-        let CHAR_LIBRARY = {};
-
-        async function loadCharLibrary() {
-            try {
-                const response = await fetch('char_library.json');
-                const data = await response.json();
-                CHAR_LIBRARY = data;
-                console.log('字库加载成功！');
-            } catch (error) {
-                console.error('字库加载失败，使用内置字库');
-                CHAR_LIBRARY = {
-                    "1": {
-                        "name": "基础汉字",
-                        "chars": [
-                            {"char": "一", "pinyin": "yī", "meaning": "one", "emoji": "1️⃣"},
-                            {"char": "二", "pinyin": "èr", "meaning": "two", "emoji": "2️⃣"},
-                            {"char": "三", "pinyin": "sān", "meaning": "three", "emoji": "3️⃣"},
-                            {"char": "大", "pinyin": "dà", "meaning": "big", "emoji": "👐"},
-                            {"char": "小", "pinyin": "xiǎo", "meaning": "small", "emoji": "👶"},
-                            {"char": "人", "pinyin": "rén", "meaning": "person", "emoji": "🧍"},
-                            {"char": "口", "pinyin": "kǒu", "meaning": "mouth", "emoji": "👄"},
-                            {"char": "日", "pinyin": "rì", "meaning": "sun", "emoji": "☀️"},
-                            {"char": "月", "pinyin": "yuè", "meaning": "moon", "emoji": "🌙"},
-                            {"char": "水", "pinyin": "shuǐ", "meaning": "water", "emoji": "💧"}
-                        ]
-                    }
-                };
+        // ==================== 内置字库 ====================
+        let CHAR_LIBRARY = {
+            "1": {
+                "name": "一年级上册",
+                "chars": [
+                    {"char": "一", "pinyin": "yī", "meaning": "one", "emoji": "1️⃣"},
+                    {"char": "二", "pinyin": "èr", "meaning": "two", "emoji": "2️⃣"},
+                    {"char": "三", "pinyin": "sān", "meaning": "three", "emoji": "3️⃣"},
+                    {"char": "十", "pinyin": "shí", "meaning": "ten", "emoji": "🔟"},
+                    {"char": "木", "pinyin": "mù", "meaning": "wood", "emoji": "🌲"},
+                    {"char": "禾", "pinyin": "hé", "meaning": "grain", "emoji": "🌾"},
+                    {"char": "上", "pinyin": "shàng", "meaning": "up", "emoji": "⬆️"},
+                    {"char": "下", "pinyin": "xià", "meaning": "down", "emoji": "⬇️"},
+                    {"char": "土", "pinyin": "tǔ", "meaning": "earth", "emoji": "🌍"},
+                    {"char": "个", "pinyin": "gè", "meaning": "one", "emoji": "📏"},
+                    {"char": "八", "pinyin": "bā", "meaning": "eight", "emoji": "8️⃣"},
+                    {"char": "入", "pinyin": "rù", "meaning": "enter", "emoji": "🚪"},
+                    {"char": "大", "pinyin": "dà", "meaning": "big", "emoji": "👐"},
+                    {"char": "天", "pinyin": "tiān", "meaning": "sky", "emoji": "🌤️"},
+                    {"char": "人", "pinyin": "rén", "meaning": "person", "emoji": "🧍"},
+                    {"char": "火", "pinyin": "huǒ", "meaning": "fire", "emoji": "🔥"},
+                    {"char": "文", "pinyin": "wén", "meaning": "writing", "emoji": "✍️"},
+                    {"char": "六", "pinyin": "liù", "meaning": "six", "emoji": "6️⃣"},
+                    {"char": "七", "pinyin": "qī", "meaning": "seven", "emoji": "7️⃣"},
+                    {"char": "儿", "pinyin": "ér", "meaning": "child", "emoji": "👶"},
+                    {"char": "九", "pinyin": "jiǔ", "meaning": "nine", "emoji": "9️⃣"},
+                    {"char": "无", "pinyin": "wú", "meaning": "none", "emoji": "🚫"},
+                    {"char": "口", "pinyin": "kǒu", "meaning": "mouth", "emoji": "👄"},
+                    {"char": "日", "pinyin": "rì", "meaning": "sun", "emoji": "☀️"},
+                    {"char": "中", "pinyin": "zhōng", "meaning": "middle", "emoji": "🎯"},
+                    {"char": "了", "pinyin": "le", "meaning": "done", "emoji": "✅"},
+                    {"char": "子", "pinyin": "zǐ", "meaning": "child", "emoji": "👶"},
+                    {"char": "门", "pinyin": "mén", "meaning": "door", "emoji": "🚪"},
+                    {"char": "月", "pinyin": "yuè", "meaning": "moon", "emoji": "🌙"},
+                    {"char": "不", "pinyin": "bù", "meaning": "no", "emoji": "❌"},
+                    {"char": "开", "pinyin": "kāi", "meaning": "open", "emoji": "🔓"},
+                    {"char": "四", "pinyin": "sì", "meaning": "four", "emoji": "4️⃣"},
+                    {"char": "五", "pinyin": "wǔ", "meaning": "five", "emoji": "5️⃣"},
+                    {"char": "目", "pinyin": "mù", "meaning": "eye", "emoji": "👁️"},
+                    {"char": "耳", "pinyin": "ěr", "meaning": "ear", "emoji": "👂"},
+                    {"char": "头", "pinyin": "tóu", "meaning": "head", "emoji": "👤"},
+                    {"char": "米", "pinyin": "mǐ", "meaning": "rice", "emoji": "🍚"},
+                    {"char": "见", "pinyin": "jiàn", "meaning": "see", "emoji": "👀"},
+                    {"char": "白", "pinyin": "bái", "meaning": "white", "emoji": "⚪"},
+                    {"char": "田", "pinyin": "tián", "meaning": "field", "emoji": "🌾"},
+                    {"char": "电", "pinyin": "diàn", "meaning": "electricity", "emoji": "⚡"},
+                    {"char": "也", "pinyin": "yě", "meaning": "also", "emoji": "✨"},
+                    {"char": "长", "pinyin": "cháng", "meaning": "long", "emoji": "📏"},
+                    {"char": "山", "pinyin": "shān", "meaning": "mountain", "emoji": "⛰️"},
+                    {"char": "出", "pinyin": "chū", "meaning": "go out", "emoji": "🚪"},
+                    {"char": "飞", "pinyin": "fēi", "meaning": "fly", "emoji": "🦅"},
+                    {"char": "马", "pinyin": "mǎ", "meaning": "horse", "emoji": "🐴"},
+                    {"char": "鸟", "pinyin": "niǎo", "meaning": "bird", "emoji": "🐦"},
+                    {"char": "云", "pinyin": "yún", "meaning": "cloud", "emoji": "☁️"},
+                    {"char": "公", "pinyin": "gōng", "meaning": "public", "emoji": "🏛️"},
+                    {"char": "车", "pinyin": "chē", "meaning": "car", "emoji": "🚗"},
+                    {"char": "牛", "pinyin": "niú", "meaning": "cow", "emoji": "🐮"},
+                    {"char": "羊", "pinyin": "yáng", "meaning": "sheep", "emoji": "🐑"},
+                    {"char": "小", "pinyin": "xiǎo", "meaning": "small", "emoji": "👶"},
+                    {"char": "少", "pinyin": "shǎo", "meaning": "few", "emoji": "🔽"},
+                    {"char": "巾", "pinyin": "jīn", "meaning": "towel", "emoji": "🧣"},
+                    {"char": "牙", "pinyin": "yá", "meaning": "tooth", "emoji": "🦷"},
+                    {"char": "尺", "pinyin": "chǐ", "meaning": "ruler", "emoji": "📏"},
+                    {"char": "毛", "pinyin": "máo", "meaning": "hair", "emoji": "💇"},
+                    {"char": "卜", "pinyin": "bo", "meaning": "divine", "emoji": "🔮"},
+                    {"char": "又", "pinyin": "yòu", "meaning": "again", "emoji": "🔄"},
+                    {"char": "心", "pinyin": "xīn", "meaning": "heart", "emoji": "❤️"},
+                    {"char": "风", "pinyin": "fēng", "meaning": "wind", "emoji": "💨"},
+                    {"char": "力", "pinyin": "lì", "meaning": "power", "emoji": "💪"},
+                    {"char": "手", "pinyin": "shǒu", "meaning": "hand", "emoji": "✋"},
+                    {"char": "水", "pinyin": "shuǐ", "meaning": "water", "emoji": "💧"},
+                    {"char": "广", "pinyin": "guǎng", "meaning": "wide", "emoji": "🏢"},
+                    {"char": "升", "pinyin": "shēng", "meaning": "rise", "emoji": "📈"},
+                    {"char": "足", "pinyin": "zú", "meaning": "foot", "emoji": "🦶"},
+                    {"char": "走", "pinyin": "zǒu", "meaning": "walk", "emoji": "🚶"},
+                    {"char": "方", "pinyin": "fāng", "meaning": "square", "emoji": "⬜"},
+                    {"char": "半", "pinyin": "bàn", "meaning": "half", "emoji": "🌗"},
+                    {"char": "巴", "pinyin": "bā", "meaning": "ba", "emoji": "🐍"},
+                    {"char": "业", "pinyin": "yè", "meaning": "industry", "emoji": "🏭"},
+                    {"char": "本", "pinyin": "běn", "meaning": "book", "emoji": "📖"},
+                    {"char": "平", "pinyin": "píng", "meaning": "flat", "emoji": "➖"},
+                    {"char": "书", "pinyin": "shū", "meaning": "book", "emoji": "📚"},
+                    {"char": "自", "pinyin": "zì", "meaning": "self", "emoji": "🧍"},
+                    {"char": "已", "pinyin": "yǐ", "meaning": "already", "emoji": "✅"},
+                    {"char": "东", "pinyin": "dōng", "meaning": "east", "emoji": "🌅"},
+                    {"char": "西", "pinyin": "xī", "meaning": "west", "emoji": "🌇"},
+                    {"char": "回", "pinyin": "huí", "meaning": "return", "emoji": "🔙"},
+                    {"char": "片", "pinyin": "piàn", "meaning": "slice", "emoji": "🍕"},
+                    {"char": "皮", "pinyin": "pí", "meaning": "skin", "emoji": "🍊"},
+                    {"char": "生", "pinyin": "shēng", "meaning": "life", "emoji": "🌱"},
+                    {"char": "里", "pinyin": "lǐ", "meaning": "inside", "emoji": "📦"},
+                    {"char": "果", "pinyin": "guǒ", "meaning": "fruit", "emoji": "🍎"},
+                    {"char": "几", "pinyin": "jǐ", "meaning": "how many", "emoji": "❓"},
+                    {"char": "用", "pinyin": "yòng", "meaning": "use", "emoji": "🛠️"},
+                    {"char": "鱼", "pinyin": "yú", "meaning": "fish", "emoji": "🐟"},
+                    {"char": "今", "pinyin": "jīn", "meaning": "today", "emoji": "📅"},
+                    {"char": "正", "pinyin": "zhèng", "meaning": "correct", "emoji": "✅"},
+                    {"char": "雨", "pinyin": "yǔ", "meaning": "rain", "emoji": "🌧️"},
+                    {"char": "两", "pinyin": "liǎng", "meaning": "two", "emoji": "2️⃣"},
+                    {"char": "瓜", "pinyin": "guā", "meaning": "melon", "emoji": "🍉"},
+                    {"char": "衣", "pinyin": "yī", "meaning": "clothes", "emoji": "👕"},
+                    {"char": "来", "pinyin": "lái", "meaning": "come", "emoji": "🚶"},
+                    {"char": "年", "pinyin": "nián", "meaning": "year", "emoji": "📆"},
+                    {"char": "左", "pinyin": "zuǒ", "meaning": "left", "emoji": "⬅️"},
+                    {"char": "右", "pinyin": "yòu", "meaning": "right", "emoji": "➡️"},
+                    {"char": "万", "pinyin": "wàn", "meaning": "ten thousand", "emoji": "💰"}
+                ]
             }
-        }
+        };
 
         // ==================== 初始化 ====================
         function init() {
@@ -591,12 +682,10 @@
             document.getElementById('studentName').value = appData.studentName;
             document.getElementById('settingsLevel').value = appData.level;
 
-            loadCharLibrary().then(() => {
-                updateStats();
-                checkStreak();
-                updateBadges();
-                initCanvas();
-            });
+            updateStats();
+            checkStreak();
+            updateBadges();
+            initCanvas();
         }
 
         function updateStats() {
@@ -708,7 +797,6 @@
                 showStarAnimation();
             }
 
-            // 自动切换到写字标签
             setTimeout(() => {
                 document.querySelectorAll('.nav-tab')[1].click();
             }, 1000);
@@ -731,116 +819,197 @@
             }, 1500);
         }
 
-        // ==================== 手写功能 ====================
+        // ==================== 手写功能 - iOS 专用优化 ====================
         let canvas, ctx, isDrawing = false;
         let lastX = 0, lastY = 0;
+        let points = [];
 
         function initCanvas() {
             canvas = document.getElementById('writeCanvas');
+            if (!canvas) return;
+
             ctx = canvas.getContext('2d');
 
-            // 设置 canvas 尺寸
+            // 高清渲染
+            const dpr = window.devicePixelRatio || 1;
             const box = document.getElementById('writeBox');
-            canvas.width = box.offsetWidth;
-            canvas.height = box.offsetHeight;
+            const rect = box.getBoundingClientRect();
 
-            // 设置画笔
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = rect.height + 'px';
+
+            ctx.scale(dpr, dpr);
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
-            ctx.lineWidth = 8;
+            ctx.lineWidth = 6;
             ctx.strokeStyle = '#E85D4E';
 
-            // 触摸事件
+            // ===== iOS 专用：使用 touch 事件 =====
+            // 先移除所有旧事件监听器（防止重复绑定）
+            const newCanvas = canvas.cloneNode(true);
+            canvas.parentNode.replaceChild(newCanvas, canvas);
+            canvas = newCanvas;
+            ctx = canvas.getContext('2d');
+
+            // 重新设置 canvas 尺寸
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = rect.height + 'px';
+            ctx.scale(dpr, dpr);
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.lineWidth = 6;
+            ctx.strokeStyle = '#E85D4E';
+
+            // 绑定 touch 事件（iOS 兼容性最好）
             canvas.addEventListener('touchstart', handleTouchStart, {passive: false});
             canvas.addEventListener('touchmove', handleTouchMove, {passive: false});
-            canvas.addEventListener('touchend', handleTouchEnd);
+            canvas.addEventListener('touchend', handleTouchEnd, {passive: false});
+            canvas.addEventListener('touchcancel', handleTouchEnd, {passive: false});
 
-            // 鼠标事件（PC测试用）
+            // 同时绑定鼠标事件（PC 测试用）
             canvas.addEventListener('mousedown', handleMouseDown);
             canvas.addEventListener('mousemove', handleMouseMove);
             canvas.addEventListener('mouseup', handleMouseUp);
             canvas.addEventListener('mouseleave', handleMouseUp);
+
+            // 防止 iOS 上的默认行为
+            canvas.addEventListener('gesturestart', function(e) { e.preventDefault(); });
+            canvas.addEventListener('gesturechange', function(e) { e.preventDefault(); });
+            canvas.addEventListener('gestureend', function(e) { e.preventDefault(); });
         }
 
-        function getPos(e) {
+        function getTouchPos(e) {
             const rect = canvas.getBoundingClientRect();
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            const touch = e.touches[0] || e.changedTouches[0];
             return {
-                x: clientX - rect.left,
-                y: clientY - rect.top
+                x: touch.clientX - rect.left,
+                y: touch.clientY - rect.top
             };
         }
 
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        // ===== Touch 事件处理 =====
         function handleTouchStart(e) {
             e.preventDefault();
+            e.stopPropagation();
+
+            if (e.touches.length !== 1) return; // 只处理单指
+
             isDrawing = true;
-            const pos = getPos(e);
+            const pos = getTouchPos(e);
             lastX = pos.x;
             lastY = pos.y;
+            points = [{x: pos.x, y: pos.y}];
+
+            // 画一个点
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, ctx.lineWidth / 2, 0, Math.PI * 2);
+            ctx.fillStyle = ctx.strokeStyle;
+            ctx.fill();
         }
 
         function handleTouchMove(e) {
             e.preventDefault();
-            if (!isDrawing) return;
-            const pos = getPos(e);
-            draw(pos.x, pos.y);
-        }
+            e.stopPropagation();
 
-        function handleTouchEnd(e) {
-            isDrawing = false;
-        }
+            if (!isDrawing || e.touches.length !== 1) return;
 
-        function handleMouseDown(e) {
-            isDrawing = true;
-            const pos = getPos(e);
+            const pos = getTouchPos(e);
+
+            // 直接画线（iOS 上更流畅）
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+
             lastX = pos.x;
             lastY = pos.y;
         }
 
+        function handleTouchEnd(e) {
+            e.preventDefault();
+            isDrawing = false;
+            points = [];
+        }
+
+        // ===== Mouse 事件处理（PC 测试） =====
+        function handleMouseDown(e) {
+            isDrawing = true;
+            const pos = getMousePos(e);
+            lastX = pos.x;
+            lastY = pos.y;
+
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, ctx.lineWidth / 2, 0, Math.PI * 2);
+            ctx.fillStyle = ctx.strokeStyle;
+            ctx.fill();
+        }
+
         function handleMouseMove(e) {
             if (!isDrawing) return;
-            const pos = getPos(e);
-            draw(pos.x, pos.y);
+            const pos = getMousePos(e);
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+
+            lastX = pos.x;
+            lastY = pos.y;
         }
 
         function handleMouseUp(e) {
             isDrawing = false;
         }
 
-        function draw(x, y) {
-            ctx.beginPath();
-            ctx.moveTo(lastX, lastY);
-            ctx.lineTo(x, y);
-            ctx.stroke();
-            lastX = x;
-            lastY = y;
-        }
-
         function clearCanvas() {
-            if (!ctx) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (!ctx || !canvas) return;
+            const dpr = window.devicePixelRatio || 1;
+            ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
         }
 
         function updateWriteTab() {
-            if (!appData.currentChar) return;
+            if (!appData.currentChar) {
+                document.getElementById('writeCharName').textContent = '请先学习汉字';
+                document.getElementById('writeHint').textContent = '👆 先去"学汉字"标签学习新字';
+                return;
+            }
 
             document.getElementById('writeCharName').textContent = appData.currentChar.char + ' (' + appData.currentChar.pinyin + ')';
+            document.getElementById('writeHint').textContent = '👆 用手指在格子里跟着写';
             document.getElementById('demoChar').textContent = appData.currentChar.char;
             clearCanvas();
         }
 
         function checkWriting() {
-            // 检查是否写了东西
+            if (!ctx || !canvas) return;
+
+            const dpr = window.devicePixelRatio || 1;
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const hasDrawing = imageData.data.some((val, i) => i % 4 === 3 && val > 0);
+            let hasDrawing = false;
+            for (let i = 3; i < imageData.data.length; i += 4) {
+                if (imageData.data[i] > 0) {
+                    hasDrawing = true;
+                    break;
+                }
+            }
 
             if (!hasDrawing) {
                 alert('请先写字哦！✍️');
                 return;
             }
 
-            // 记录已写
             if (appData.currentChar && !appData.writtenChars.includes(appData.currentChar.char)) {
                 appData.writtenChars.push(appData.currentChar.char);
                 appData.totalStars += 10;
@@ -849,7 +1018,6 @@
                 updateBadges();
             }
 
-            // 显示成功
             document.getElementById('successOverlay').classList.add('show');
             showStarAnimation();
         }
@@ -861,7 +1029,6 @@
 
         function nextChar() {
             clearCanvas();
-            // 切换回学习标签
             document.querySelectorAll('.nav-tab')[0].click();
             startLearning();
         }
@@ -912,16 +1079,14 @@
         }
 
         // 窗口大小改变时重新设置 canvas
+        let resizeTimeout;
         window.addEventListener('resize', () => {
-            if (canvas) {
-                const box = document.getElementById('writeBox');
-                canvas.width = box.offsetWidth;
-                canvas.height = box.offsetHeight;
-                ctx.lineCap = 'round';
-                ctx.lineJoin = 'round';
-                ctx.lineWidth = 8;
-                ctx.strokeStyle = '#E85D4E';
-            }
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (canvas) {
+                    initCanvas();
+                }
+            }, 200);
         });
 
         // 初始化
