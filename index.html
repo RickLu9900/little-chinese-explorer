@@ -210,7 +210,7 @@
             font-weight: 600;
         }
 
-        /* 手写板 - iOS 优化 */
+        /* 手写板 - 全平台兼容 */
         .write-box {
             position: relative;
             width: 200px;
@@ -464,7 +464,7 @@
         <div class="content-area" id="tab-write">
             <div class="write-section">
                 <div class="write-title">✏️ 跟着写一写：<span id="writeCharName" style="color:#E85D4E;">请先学习汉字</span></div>
-                <div class="write-hint" id="writeHint">👆 用手指在右边格子里写字</div>
+                <div class="write-hint" id="writeHint">👆 用鼠标或手指在右边格子里写字</div>
                 <div class="write-container">
                     <div>
                         <div class="stroke-demo" id="strokeDemo">
@@ -820,20 +820,26 @@
             }, 1500);
         }
 
-        // ==================== 手写功能 - iOS 专用优化 ====================
+        // ==================== 手写功能 - 全平台兼容 ====================
         let canvas, ctx, isDrawing = false;
         let lastX = 0, lastY = 0;
-        let points = [];
 
         function initCanvas() {
+            const box = document.getElementById('writeBox');
+            if (!box) return;
+
+            // 获取或创建 canvas
             canvas = document.getElementById('writeCanvas');
-            if (!canvas) return;
+            if (!canvas) {
+                canvas = document.createElement('canvas');
+                canvas.id = 'writeCanvas';
+                box.appendChild(canvas);
+            }
 
             ctx = canvas.getContext('2d');
 
             // 高清渲染
             const dpr = window.devicePixelRatio || 1;
-            const box = document.getElementById('writeBox');
             const rect = box.getBoundingClientRect();
 
             canvas.width = rect.width * dpr;
@@ -847,42 +853,114 @@
             ctx.lineWidth = 6;
             ctx.strokeStyle = '#E85D4E';
 
-            // ===== iOS 专用：使用 touch 事件 =====
-            // 先移除所有旧事件监听器（防止重复绑定）
-            const newCanvas = canvas.cloneNode(true);
-            canvas.parentNode.replaceChild(newCanvas, canvas);
-            canvas = newCanvas;
-            ctx = canvas.getContext('2d');
+            // ===== 绑定所有输入事件（鼠标 + 触摸 + 指针） =====
 
-            // 重新设置 canvas 尺寸
-            canvas.width = rect.width * dpr;
-            canvas.height = rect.height * dpr;
-            canvas.style.width = rect.width + 'px';
-            canvas.style.height = rect.height + 'px';
-            ctx.scale(dpr, dpr);
-            ctx.lineCap = 'round';
-            ctx.lineJoin = 'round';
-            ctx.lineWidth = 6;
-            ctx.strokeStyle = '#E85D4E';
+            // 1. 鼠标事件（PC 桌面）
+            canvas.addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                isDrawing = true;
+                const pos = getMousePos(e);
+                lastX = pos.x;
+                lastY = pos.y;
+                drawDot(pos.x, pos.y);
+            });
 
-            // 绑定 touch 事件（iOS 兼容性最好）
-            canvas.addEventListener('touchstart', handleTouchStart, {passive: false});
-            canvas.addEventListener('touchmove', handleTouchMove, {passive: false});
-            canvas.addEventListener('touchend', handleTouchEnd, {passive: false});
-            canvas.addEventListener('touchcancel', handleTouchEnd, {passive: false});
+            canvas.addEventListener('mousemove', function(e) {
+                if (!isDrawing) return;
+                e.preventDefault();
+                const pos = getMousePos(e);
+                drawLine(lastX, lastY, pos.x, pos.y);
+                lastX = pos.x;
+                lastY = pos.y;
+            });
 
-            // 同时绑定鼠标事件（PC 测试用）
-            canvas.addEventListener('mousedown', handleMouseDown);
-            canvas.addEventListener('mousemove', handleMouseMove);
-            canvas.addEventListener('mouseup', handleMouseUp);
-            canvas.addEventListener('mouseleave', handleMouseUp);
+            canvas.addEventListener('mouseup', function(e) {
+                e.preventDefault();
+                isDrawing = false;
+            });
 
-            // 防止 iOS 上的默认行为
-            canvas.addEventListener('gesturestart', function(e) { e.preventDefault(); });
-            canvas.addEventListener('gesturechange', function(e) { e.preventDefault(); });
-            canvas.addEventListener('gestureend', function(e) { e.preventDefault(); });
+            canvas.addEventListener('mouseleave', function(e) {
+                isDrawing = false;
+            });
+
+            // 2. 触摸事件（iOS / Android / Windows 触摸屏）
+            canvas.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.touches.length !== 1) return;
+
+                isDrawing = true;
+                const pos = getTouchPos(e);
+                lastX = pos.x;
+                lastY = pos.y;
+                drawDot(pos.x, pos.y);
+            }, {passive: false});
+
+            canvas.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (!isDrawing || e.touches.length !== 1) return;
+
+                const pos = getTouchPos(e);
+                drawLine(lastX, lastY, pos.x, pos.y);
+                lastX = pos.x;
+                lastY = pos.y;
+            }, {passive: false});
+
+            canvas.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                isDrawing = false;
+            }, {passive: false});
+
+            canvas.addEventListener('touchcancel', function(e) {
+                e.preventDefault();
+                isDrawing = false;
+            }, {passive: false});
+
+            // 3. 指针事件（Windows 触摸屏/手写笔 - 备用）
+            if (window.PointerEvent) {
+                canvas.addEventListener('pointerdown', function(e) {
+                    if (e.pointerType === 'mouse') return; // 鼠标已由上面处理
+                    e.preventDefault();
+                    isDrawing = true;
+                    const pos = getPointerPos(e);
+                    lastX = pos.x;
+                    lastY = pos.y;
+                    drawDot(pos.x, pos.y);
+                });
+
+                canvas.addEventListener('pointermove', function(e) {
+                    if (e.pointerType === 'mouse' || !isDrawing) return;
+                    e.preventDefault();
+                    const pos = getPointerPos(e);
+                    drawLine(lastX, lastY, pos.x, pos.y);
+                    lastX = pos.x;
+                    lastY = pos.y;
+                });
+
+                canvas.addEventListener('pointerup', function(e) {
+                    if (e.pointerType === 'mouse') return;
+                    e.preventDefault();
+                    isDrawing = false;
+                });
+            }
+
+            // 防止 iOS 缩放手势
+            document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
+            document.addEventListener('gesturechange', function(e) { e.preventDefault(); });
+            document.addEventListener('gestureend', function(e) { e.preventDefault(); });
         }
 
+        // 获取鼠标位置
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        // 获取触摸位置
         function getTouchPos(e) {
             const rect = canvas.getBoundingClientRect();
             const touch = e.touches[0] || e.changedTouches[0];
@@ -892,7 +970,8 @@
             };
         }
 
-        function getMousePos(e) {
+        // 获取指针位置
+        function getPointerPos(e) {
             const rect = canvas.getBoundingClientRect();
             return {
                 x: e.clientX - rect.left,
@@ -900,78 +979,20 @@
             };
         }
 
-        // ===== Touch 事件处理 =====
-        function handleTouchStart(e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            if (e.touches.length !== 1) return; // 只处理单指
-
-            isDrawing = true;
-            const pos = getTouchPos(e);
-            lastX = pos.x;
-            lastY = pos.y;
-            points = [{x: pos.x, y: pos.y}];
-
-            // 画一个点
+        // 画一个点
+        function drawDot(x, y) {
             ctx.beginPath();
-            ctx.arc(pos.x, pos.y, ctx.lineWidth / 2, 0, Math.PI * 2);
+            ctx.arc(x, y, ctx.lineWidth / 2, 0, Math.PI * 2);
             ctx.fillStyle = ctx.strokeStyle;
             ctx.fill();
         }
 
-        function handleTouchMove(e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            if (!isDrawing || e.touches.length !== 1) return;
-
-            const pos = getTouchPos(e);
-
-            // 直接画线（iOS 上更流畅）
+        // 画一条线
+        function drawLine(x1, y1, x2, y2) {
             ctx.beginPath();
-            ctx.moveTo(lastX, lastY);
-            ctx.lineTo(pos.x, pos.y);
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
             ctx.stroke();
-
-            lastX = pos.x;
-            lastY = pos.y;
-        }
-
-        function handleTouchEnd(e) {
-            e.preventDefault();
-            isDrawing = false;
-            points = [];
-        }
-
-        // ===== Mouse 事件处理（PC 测试） =====
-        function handleMouseDown(e) {
-            isDrawing = true;
-            const pos = getMousePos(e);
-            lastX = pos.x;
-            lastY = pos.y;
-
-            ctx.beginPath();
-            ctx.arc(pos.x, pos.y, ctx.lineWidth / 2, 0, Math.PI * 2);
-            ctx.fillStyle = ctx.strokeStyle;
-            ctx.fill();
-        }
-
-        function handleMouseMove(e) {
-            if (!isDrawing) return;
-            const pos = getMousePos(e);
-
-            ctx.beginPath();
-            ctx.moveTo(lastX, lastY);
-            ctx.lineTo(pos.x, pos.y);
-            ctx.stroke();
-
-            lastX = pos.x;
-            lastY = pos.y;
-        }
-
-        function handleMouseUp(e) {
-            isDrawing = false;
         }
 
         function clearCanvas() {
@@ -988,7 +1009,7 @@
             }
 
             document.getElementById('writeCharName').textContent = appData.currentChar.char + ' (' + appData.currentChar.pinyin + ')';
-            document.getElementById('writeHint').textContent = '👆 用手指在格子里跟着写';
+            document.getElementById('writeHint').textContent = '👆 用鼠标或手指在格子里跟着写';
             document.getElementById('demoChar').textContent = appData.currentChar.char;
             clearCanvas();
         }
